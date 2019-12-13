@@ -1,0 +1,50 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/style1.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/demo1.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/drop.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/styletable.css')}}" >
+
+
+    <title>Rechercher des Blagues</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1><span align="center">All For Kids</span></h1><br>
+        <span align="center"> <h1>Espace Administration des loisirs</h1></span>
+
+
+    </header>
+    <header><h1><span align="center">Rechercher des Blagues</span></h1></header>
+    <div  class="form">
+
+        <form action="" method="post" >
+            <p class="contact"><label>Titre</label></p><br><input type="text" name="titre" /><br>
+            <input type="Submit" name="rechercher" value="Rechercher"/>
+        </form>
+    </div>
+    <table border="2px">
+        <tr><td>Id</td><td>Titre</td><td>description</td></tr>
+        {% for m in blague  %}
+            <tr>
+                <td>{{ m.Id }}</td>
+                <td>{{ m.Titre }}</td>
+                <td>{{ m.Description }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+
+    <header><h1><span align="center">  <a href="{{ path('_affiche_blague')}}">Cliquez ici pour gérer tout les blagues</a>
+</span></h1></header>
+
+
+
+</div>
+</body>
+</html>
+
+
+
+

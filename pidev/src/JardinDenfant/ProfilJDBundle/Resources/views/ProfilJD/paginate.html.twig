@@ -1,0 +1,9 @@
+{% extends 'template.html.twig' %}
+{% for i in jds %}
+{% endfor %}
+{% block body %}
+{# display navigation #}
+<div class="pagerArea txt-center" style="text-align: center">
+    {{ knp_pagination_render(jds) }}
+</div>
+{% endblock %}

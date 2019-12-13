@@ -1,0 +1,76 @@
+.dropbtn {
+    color: white;
+    font-size: 16px;
+    
+}
+
+.dropdown {
+	position : absolute;
+	left : 80px;
+	top : 1px;
+    //display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    top:39px;
+    background-color: #D9D9D9;
+    width: 147px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	font-size : 14px;
+	font-weight: bold;
+	
+    
+}
+
+.list {
+	position : absolute;
+	left : 230px;
+	
+}
+.list1 {
+	position : absolute;
+	left : 380px;
+	
+}
+.list2 {
+	position : absolute;
+	left : 540px;
+	
+}
+.list3 {
+	position : absolute;
+	left : 710px;
+	
+}
+.list4 {
+	position : absolute;
+	left : 910px;
+	
+}
+.list5 {
+	position : absolute;
+	left : 1120px;
+	
+}
+
+
+
+
+.dropdown-content a {
+    color: black;
+    width: 127px;
+	
+    
+}
+
+.dropdown-content a:hover {background-color: #fff}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown:hover .dropbtn {
+    background-color: #000;
+}

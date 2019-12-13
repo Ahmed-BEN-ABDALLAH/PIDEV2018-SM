@@ -1,0 +1,318 @@
+{% include'::admin.html.twig' %}
+ {% block body %}
+  <html>
+  <head>
+   <title>Liste des Blagues</title>
+   <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+   <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }} " rel="stylesheet">
+   <link rel="stylesheet" type="text/css" href="{{ asset('plugins/rs-plugin/css/settings.css')}}" media="screen">
+   <link rel="stylesheet" type="text/css" href="{{ asset('plugins/selectbox/select_option1.css')}}">
+   <link rel="stylesheet" type="text/css" href="{{ asset('plugins/owl-carousel/owl.carousel.css')}}" media="screen">
+   <link rel="stylesheet" type="text/css" href="{{ asset('plugins/isotope/jquery.fancybox.css')}} ">
+   <link rel="stylesheet" type="text/css" href="{{ asset('plugins/isotope/isotope.css')}}">
+   <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
+  </head>
+  <body>
+  <div class="main-panel">
+      {% for flashMessage in app.session.flashbag.get('success') %}
+
+       <div class="alert alert-success">
+           {{ flashMessage }}
+       </div>
+      {% endfor %}
+   <div class="content">
+    <div class="container-fluid">
+     <div class="row">
+      <div class="col-md-12">
+       <div class="card">
+        <div class="card-header" data-background-color="purple">
+         <h4 class="title">Espace Administration des profis</h4>
+         <p class="category">Liste des profils</p>
+        </div>
+        <div  class="card-content table-responsive">
+
+         <table class="table" id="affichage">
+          <thead class="text-primary">
+          <th>cin</th>
+          <th>nom</th>
+          <th>prenom</th>
+          <th>specialite</th>
+          <th >image</th>
+          <th>pièce justificatif</th>
+          <th>Validation</th>
+          <th>Refus</th>
+          </thead>
+             {% for pediatres in pediatres %}
+              <tbody>
+               <tr>
+                <td>{{ pediatres.cin }}</td>
+                <td>{{ pediatres.nom }}</td>
+                <td>{{ pediatres.prenom }}</td>
+                <td>{{ pediatres.specialite }}</td>
+                <td >
+                 <div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector charity" style="width: 100px">
+                  <article class="">
+                   <figure>
+                    <img src='{{ asset('' ~ pediatres.image) }}' alt='image' class='img-rounded'>
+                    <div class="overlay-background">
+                     <div class="inner"></div>
+                    </div>
+                    <div class="overlay">
+                     <a class="fancybox-pop" rel="portfolio-1" href="{{ asset('' ~ pediatres.image) }}">
+                      <i class="fa fa-search-plus" aria-hidden="true"></i>
+                     </a>
+                    </div>
+                   </figure>
+                  </article>
+                 </div></td>
+                <td><a href="{{ asset('uploads/' ~ pediatres.justif) }}">Voir pièce justificatif</a></td>
+                <td><a href="{{ path('accepterspecialiste',{'id':pediatres.id})}}">Valider Specialiste</a></td>
+                <td><a href="{{ path('refuserspecialiste',{'id':pediatres.id})}}">Refuser Specialiste</a></td>
+               </tr>
+
+
+              </tbody>
+             {% endfor %}
+         </table>
+         <div >
+
+         </div>
+        </div>
+
+        <div id="div" name="div" class="card-content table-responsive"></div>
+
+       </div>
+       <div >
+        <form method="post">
+         <input type="text"  placeholder="CIN"  name="cin" id="cin">
+
+         <input type="text"  placeholder="nom"  name="nom" id="nom">
+
+         <input type="text"  placeholder="prenom"  name="prenom" id="prenom">
+         <input type="text"  placeholder="spécialité"  name="specialite" id="specialite">
+        </form>
+       </div>
+      </div>
+
+     </div>
+    </div>
+   </div>
+
+
+
+  </div>
+  <script src="{{ asset ('jquery-3.2.1.min.js') }}"></script>
+  <script>
+      $("#nom").keyup(
+
+          function () {
+              var nom=$('#nom').val();
+              var DATA='nom='+nom;
+              $.ajax({
+                      type:"POST",
+                      url:"{{ path('verifprofil') }}",
+                      data:DATA,
+                      success:function (data)
+                      {
+                          console.log(data);
+                          $("#div").html("<table class='table' id='res'> <thead class='text-primary'> <th>cin</th> <th>nom</th> <th>prenom</th> <th>specialite</th> <th >image</th> <th>pièce justificatif</th> <th>Validation</th> </thead></table>");
+                          $.each(data,function (k,el) {
+                              console.log(data);
+                              $("#affichage").hide();
+                              $('#res').append(
+                                  "<tr>"+
+                                  "<td>"+el.cin+"</td>"+
+                                  "<td>"+el.nom+"</td>"+
+                                  "<td>"+el.prenom+"</td>"+
+                                  "<td>"+el.specialite+"</td>"+
+                                  '<td>'+'<div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector charity" style="width: 100px;"><article class=""><figure>'+
+                                  '<img alt="" src="http://localhost/pidev/web/'+ el.image+ '">'+
+                                  '<div class="overlay-background"><div class="inner"></div></div><div class="overlay"><a class="fancybox-pop" rel="portfolio-1" href="http://localhost/pidev/web/'+ el.image+ '"> <i class="fa fa-search-plus" aria-hidden="true"></i></a> </div> </figure> </article></div>'+
+                                  '</td>'+
+                                  '<td>'+'<a href="http://localhost/pidev/web/uploads/'+  el.justif+' "> pièce justificatif(PDF)</a></td>'+
+                                  '<td><a href="http://localhost/pidev/web/app_dev.php/sante/accepterspecialiste/'+ el.id+'">Valider Specialiste</a></td>'+
+                                  '<td><a href="http://localhost/pidev/web/app_dev.php/sante/refuserspecialiste/'+ el.id+'">Refuser Specialiste</a></td>'+
+                                  "</tr>"
+                              );
+
+                          });
+                      }
+
+                  }
+              );
+          }
+      );
+      $("#prenom").keyup(
+
+          function () {
+              var prenom=$('#prenom').val();
+              var DATA='prenom='+prenom;
+              $.ajax({
+                      type:"POST",
+                      url:"{{ path('verifprofil') }}",
+                      data:DATA,
+                      success:function (data)
+                      {
+                          console.log(data);
+                          $("#div").html("<table class='table' id='res'> <thead class='text-primary'> <th>cin</th> <th>nom</th> <th>prenom</th> <th>specialite</th> <th >image</th> <th>pièce justificatif</th> <th>Validation</th> </thead></table>");
+                          $.each(data,function (k,el) {
+                              console.log(data);
+                              $("#affichage").hide();
+                              $('#res').append(
+                                  "<tr>"+
+                                  "<td>"+el.cin+"</td>"+
+                                  "<td>"+el.nom+"</td>"+
+                                  "<td>"+el.prenom+"</td>"+
+                                  "<td>"+el.specialite+"</td>"+
+                                  '<td>'+'<div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector charity" style="width: 100px;"><article class=""><figure>'+
+                                  '<img alt="" src="http://localhost/pidev/web/'+ el.image+ '">'+
+                                  '<div class="overlay-background"><div class="inner"></div></div><div class="overlay"><a class="fancybox-pop" rel="portfolio-1" href="http://localhost/pidev/web/'+ el.image+ '"> <i class="fa fa-search-plus" aria-hidden="true"></i></a> </div> </figure> </article></div>'+
+                                  '</td>'+
+                                  '<td>'+'<a href="http://localhost/pidev/web/uploads/'+  el.justif+' "> pièce justificatif(PDF)</a></td>'+
+                                  '<td><a href="http://localhost/pidev/web/app_dev.php/sante/accepterspecialiste/'+ el.id+'">Valider Specialiste</a></td>'+
+                                  '<td><a href="http://localhost/pidev/web/app_dev.php/sante/refuserspecialiste/'+ el.id+'">Refuser Specialiste</a></td>'+
+
+                                  "</tr>"
+                              );
+
+                          });
+                      }
+
+                  }
+              );
+          }
+      );
+      $("#specialite").keyup(
+
+          function () {
+              var specialite=$('#specialite').val();
+              var DATA='specialite='+specialite;
+              $.ajax({
+                      type:"POST",
+                      url:"{{ path('verifprofil') }}",
+                      data:DATA,
+                      success:function (data)
+                      {
+                          console.log(data);
+                          $("#div").html("<table class='table' id='res'> <thead class='text-primary'> <th>cin</th> <th>nom</th> <th>prenom</th> <th>specialite</th> <th >image</th> <th>pièce justificatif</th> <th>Validation</th> </thead></table>");
+                          $.each(data,function (k,el) {
+                              console.log(data);
+                              $("#affichage").hide();
+                              $('#res').append(
+                                  "<tr>"+
+                                  "<td>"+el.cin+"</td>"+
+                                  "<td>"+el.nom+"</td>"+
+                                  "<td>"+el.prenom+"</td>"+
+                                  "<td>"+el.specialite+"</td>"+
+                                  '<td>'+'<div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector charity" style="width: 100px;"><article class=""><figure>'+
+                                  '<img alt="" src="http://localhost/pidev/web/'+ el.image+ '">'+
+                                  '<div class="overlay-background"><div class="inner"></div></div><div class="overlay"><a class="fancybox-pop" rel="portfolio-1" href="http://localhost/pidev/web/'+ el.image+ '"> <i class="fa fa-search-plus" aria-hidden="true"></i></a> </div> </figure> </article></div>'+
+                                  '</td>'+
+                                  '<td>'+'<a href="http://localhost/pidev/web/uploads/'+  el.justif+' "> pièce justificatif(PDF)</a></td>'+
+                                  '<td><a href="http://localhost/pidev/web/app_dev.php/sante/accepterspecialiste/'+ el.id+'">Valider Specialiste</a></td>'+
+                                  '<td><a href="http://localhost/pidev/web/app_dev.php/sante/refuserspecialiste/'+ el.id+'">Refuser Specialiste</a></td>'+
+                                  "</tr>"
+                              );
+
+                          });
+                      }
+
+                  }
+              );
+          }
+      );
+      $("#cin").keyup(
+
+          function () {
+              var cin=$('#cin').val();
+              var DATA='cin='+cin;
+              $.ajax({
+                      type:"POST",
+                      url:"{{ path('verifprofil') }}",
+                      data:DATA,
+                      success:function (data)
+                      {
+                          console.log(data);
+                          $("#div").html("<table class='table' id='res'> <thead class='text-primary'> <th>cin</th> <th>nom</th> <th>prenom</th> <th>specialite</th> <th >image</th> <th>pièce justificatif</th> <th>Validation</th> </thead></table>");
+                          $.each(data,function (k,el) {
+                              console.log(data);
+                              $("#affichage").hide();
+                              $('#res').append(
+                                  "<tr>"+
+                                  "<td>"+el.cin+"</td>"+
+                                  "<td>"+el.nom+"</td>"+
+                                  "<td>"+el.prenom+"</td>"+
+                                  "<td>"+el.specialite+"</td>"+
+                                  '<td>'+'<div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector charity" style="width: 100px;"><article class=""><figure>'+
+                                  '<img alt="" src="http://localhost/pidev/web/'+ el.image+ '">'+
+                                  '<div class="overlay-background"><div class="inner"></div></div><div class="overlay"><a class="fancybox-pop" rel="portfolio-1" href="http://localhost/pidev/web/'+ el.image+ '"> <i class="fa fa-search-plus" aria-hidden="true"></i></a> </div> </figure> </article></div>'+
+                                  '</td>'+
+                                  '<td>'+'<a href="http://localhost/pidev/web/uploads/'+  el.justif+' "> pièce justificatif(PDF)</a></td>'+
+                                  '<td><a href="http://localhost/pidev/web/app_dev.php/sante/accepterspecialiste/'+ el.id+'">Valider Specialiste</a></td>'+
+                                  '<td><a href="http://localhost/pidev/web/app_dev.php/sante/refuserspecialiste/'+ el.id+'">Refuser Specialiste</a></td>'+
+                                  "</tr>"
+                              );
+
+                          });
+                      }
+
+                  }
+              );
+          }
+      );
+  </script>
+  {% if pediatres != null %}
+   <div id="notif" hidden>Vous avez des spécialistes à valider !
+   </div>
+   <script>
+       window.addEventListener('load', function () {
+           Notification.requestPermission(function (status) {
+               // Cela permet d'utiliser Notification.permission avec Chrome/Safari
+               if (Notification.permission !== status) {
+                   Notification.permission = status;
+               }
+           });
+           if (window.Notification && Notification.permission === "granted") {
+               var n = new Notification(document.getElementById('notif').textContent);
+           }
+           else {
+               alert("amal !");
+           }
+
+       });
+   </script>
+
+  {% endif %}
+  {% if articles != null %}
+   <div id="notifre" hidden>Vous avez des articles à valider!
+   </div>
+   <script>
+       window.addEventListener('load', function () {
+           Notification.requestPermission(function (status) {
+               // Cela permet d'utiliser Notification.permission avec Chrome/Safari
+               if (Notification.permission !== status) {
+                   Notification.permission = status;
+               }
+           });
+           if (window.Notification && Notification.permission === "granted") {
+               var n = new Notification(document.getElementById('notifre').textContent);
+           }
+           else {
+               alert("amal !");
+           }
+
+       });
+   </script>
+
+  {% endif %}
+  </body>
+  </html>
+
+{% endblock %}
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="{{ asset('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}"></script>
+

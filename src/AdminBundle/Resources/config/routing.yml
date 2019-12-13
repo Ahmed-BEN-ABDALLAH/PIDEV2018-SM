@@ -1,0 +1,47 @@
+admin_homepage:
+    path:     /
+    defaults: { _controller: AdminBundle:Default:index }
+page_admin:
+    path:     /admin
+    defaults: { _controller: AdminBundle:Default:Admin }
+ListDo:
+    path:     /listDo
+    defaults: { _controller: AdminBundle:Default:ListDo }
+ListEv:
+    path:     /listEv
+    defaults: { _controller: AdminBundle:Default:ListEv }
+deleteD:
+    path:     /deleteD{{id}}
+    defaults: { _controller: AdminBundle:Default:deleteD }
+
+
+deleteE:
+    path:     /deleteE{{id}}
+    defaults: { _controller: AdminBundle:Default:deleteE }
+
+
+
+
+appro:
+    path:     /appro{id}
+    defaults: { _controller: AdminBundle:Default:appro }
+
+
+
+
+desapro:
+    path:     /desapro{id}
+    defaults: { _controller: AdminBundle:Default:desapro }
+
+
+
+
+updateDo:
+    path:     /updateDo{id}
+    defaults: { _controller: AdminBundle:Default:updateDo }
+
+
+updateEv:
+    path:     /updateEv{id}
+    defaults: { _controller: AdminBundle:Default:updateEv }
+

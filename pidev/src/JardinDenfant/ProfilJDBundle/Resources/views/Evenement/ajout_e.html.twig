@@ -1,0 +1,77 @@
+{% extends "template.html.twig" %}
+{% block body %}
+    <div class="container"  style="margin:auto ">
+    {{ form_start(form) }}
+    <div class="row">
+    <div class="panel panel-default formPanel ">
+        <div class="panel-heading bg-color-1 border-color-1 not-rounded">
+            <h3 class="panel-title">ajouter  Evenement </h3>
+        </div>
+        <br>
+        <div class="col-sm-6 col-xs-12">
+            <div class="homeContactContent">
+
+
+                <div class="form-group">
+
+                    {{ form_widget(form.nonE, { 'attr': {'class': "form-control border-color-1",
+                        'placeholder': 'nom de l evenement'|trans} }) }}
+                </div>
+                <div class="form-group">
+
+                    {{ form_widget(form.adresse, { 'attr': {'class': "form-control border-color-2",
+                        'placeholder': 'adresse '|trans} }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.nbrPlaceMax, { 'attr': {'class': "form-control border-color-3",
+                        'placeholder': 'nombre de place maximaum  '|trans} }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.apropos, { 'attr': {'class': "form-control border-color-4",
+                        'placeholder': 'a propos '|trans} }) }}
+
+
+                </div>
+
+
+            </div>
+        </div>
+        <div class="col-sm-6 col-xs-12">
+            <div class="homeContactContent">
+
+
+
+
+                <div class="form-group">
+                    {{ form_widget(form.heure, { 'attr': {'class': "form-control border-color-2",
+                        'placeholder': 'heure '|trans} }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.duree, { 'attr': {'class': "form-control border-color-4",
+                        'placeholder': 'duree'|trans} }) }}
+                </div>
+
+                <div class="form-group">
+                    {{ form_widget(form.image, { 'attr': {'class': "form-control border-color-6",
+                        'placeholder': 'latitude '|trans} }) }}
+                </div>
+                <div class="form-group">
+                    {{ form_widget(form.start, { 'attr': {'class': "form-control border-color-6",
+                        'placeholder': 'latitude '|trans} }) }}
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+        <center>    <div >{{ form_widget(form.Ajouter, { 'attr': {'class': "btn btn-primary"} }) }}</div></center>
+        {{ form_end(form) }}
+        <br>
+    </div>
+    <!-- Ends contact form 1 -->
+    </div>
+
+{% endblock %}

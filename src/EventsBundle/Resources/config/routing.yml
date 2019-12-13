@@ -1,0 +1,122 @@
+events_homepage:
+    path:     /
+    defaults: { _controller: EventsBundle:Default:index }
+events:
+    path:     /events
+    defaults: { _controller: EventsBundle:Events:Event }
+ajoutE:
+    path:     /ajoutE
+    defaults: { _controller: EventsBundle:Events:AjoutE }
+listE:
+    path:     /listE
+    defaults: { _controller: EventsBundle:Events:listE }
+detailE:
+    path:     /detailE/{{id}}
+    defaults: { _controller: EventsBundle:Events:DetailE }
+maevent:
+    path:     /maevent
+    defaults: { _controller: EventsBundle:Events:maevent }
+suppE:
+    path:     /suppE/{{id}}
+    defaults: { _controller: EventsBundle:Events:suppE }
+updateEE:
+    path:     /updateE/{{id}}
+    defaults: { _controller: EventsBundle:Events:updateE }
+participate:
+    path:     /particiate{id}
+    defaults: { _controller: EventsBundle:Events:participate }
+
+allusers:
+    path:     /allusers
+    defaults: { _controller: EventsBundle:Events:allusers }
+maparti:
+    path:     /maparti/
+    defaults: { _controller: EventsBundle:Events:mapart }
+
+recherche_Ajax1:
+        path:     /listE
+        defaults: { _controller: EventsBundle:Events:searchAjax}
+
+dql:
+        path:     /dqll
+        defaults: { _controller: EventsBundle:Events:dqlE}
+
+_recherche:
+        path:     /recherche
+        defaults: { _controller: EventsBundle:Events:recherche}
+_ajax:
+        path: /recherche/search
+        defaults: { _controller: EventsBundle:Events:rechercheAjax}
+
+
+translateajax:
+    path:     /translateajax
+    defaults: { _controller: EventsBundle:Events:translateajax}
+    methods: [post]
+
+
+my_app_mail_succ:
+    path: /succ
+    defaults: { _controller: EventsBundle:Events:indexmail }
+my_app_mail_form:
+ path: /mail
+ defaults: { _controller: EventsBundle:Events:new }
+my_app_mail_sendpage:
+ path: /sendmail
+ defaults: { _controller: EventsBundle:Events:sendMail }
+
+all:
+    path:     /all
+    defaults: { _controller: EventsBundle:Events:all }
+
+MyEv:
+    path:     /MyEv/{idu}
+    defaults: { _controller: EventsBundle:Events:MyEv }
+deleteE:
+    path:     /deleteEv/{id}
+    defaults: { _controller: EventsBundle:Events:DeleteE }
+
+
+Annuler:
+    path:     /Annuler/{id}
+    defaults: { _controller: EventsBundle:Events:AnnulerE }
+
+
+nbrpart:
+    path:     /nbrpart/{id}
+    defaults: { _controller: EventsBundle:Events:nbrpart }
+nbrpartMoins:
+    path:     /nbrpartMoins/{ide}
+    defaults: { _controller: EventsBundle:Events:nbrpartMoins }
+
+
+
+UpdateEv:
+    path:     /UpdateEv/{id}
+    defaults: { _controller: EventsBundle:Events:UpdateEv }
+
+
+participer:
+    path:     /participer
+    defaults: { _controller: EventsBundle:Events:participerEv }
+
+
+
+MyPart:
+    path:     /MyPart/{idu}
+    defaults: { _controller: EventsBundle:Events:MyPart }
+
+
+AllPart:
+    path:     /AllPart
+    defaults: { _controller: EventsBundle:Events:AllPart}
+
+
+AddEv:
+    path:     /AddEv
+    defaults: { _controller: EventsBundle:Events:AddEv}
+
+
+russie_user_service:
+    path:     /serviceuserconnect
+    defaults: { _controller: EventsBundle:Events:seConnecter }

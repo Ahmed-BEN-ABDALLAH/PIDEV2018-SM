@@ -1,0 +1,51 @@
+loisirs_homepage:
+    path:     /Admin
+    defaults: { _controller: LoisirsLoisirsBundle:Default:index }
+
+
+
+_ajout_bonplan:
+    path:     /AjoutBonplan
+    defaults: { _controller: LoisirsLoisirsBundle:Bonplan:AjoutBonplan }
+
+_affiche_bonplan:
+    path:     /AfficheBonplan
+    defaults: { _controller: LoisirsLoisirsBundle:Bonplan:AfficheBonplan }
+
+
+_supp_bonplan:
+    path:     /SuppBonplan/{id}
+    defaults: { _controller: LoisirsLoisirsBundle:Bonplan:SupprimerBonplan }
+
+_modif_bonplan:
+    path:     /ModifBonplan/{id}
+    defaults: { _controller: LoisirsLoisirsBundle:Bonplan:ModifierBonplan }
+_recherche_bonplan:
+    path:     /RechercheBonplan
+    defaults: { _controller: LoisirsLoisirsBundle:Bonplan:RechercherBonplan }
+
+_ajout_blague:
+    path:     /AjoutBlague
+    defaults: { _controller: LoisirsLoisirsBundle:Blague:AjoutBlague }
+
+_affiche_blague:
+    path:     /AfficheBlague
+    defaults: { _controller: LoisirsLoisirsBundle:Blague:AfficheBlague }
+_supp_blague:
+    path:     /SuppBlague/{id}
+    defaults: { _controller: LoisirsLoisirsBundle:Blague:SupprimerBlague }
+
+_modif_blague:
+    path:     /ModifBlague/{id}
+    defaults: { _controller: LoisirsLoisirsBundle:Blague:ModifierBlague }
+
+_recherche_blague:
+    path:     /RechercheBlague
+    defaults: { _controller: LoisirsLoisirsBundle:Blague:RechercherBlague }
+_afficheclient_bonplan:
+    path:     /AffichageBonplan
+    defaults: { _controller: LoisirsLoisirsBundle:Bonplan:AfficheClientBonplan }
+
+_afficheclient_blague:
+    path:     /AffichageBlague
+    defaults: { _controller: LoisirsLoisirsBundle:Blague:AfficheClientBlague }

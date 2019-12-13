@@ -1,0 +1,3 @@
+jardin_denfant_evenement_homepage:
+    path:     /
+    defaults: { _controller: JardinDenfantEvenementBundle:Default:index }

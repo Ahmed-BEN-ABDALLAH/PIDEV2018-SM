@@ -1,0 +1,12 @@
+<html>
+<head></head>
+<body>
+<div id="div_chart"></div>
+<div id="div_chart2"></div>
+
+<script type="text/javascript" src="{{ asset('https://www.gstatic.com/charts/loader.js') }}"></script>
+<script type="text/javascript">
+    {{ gc_draw([piechart, barchart ],['div_chart','div_chart2']) }}
+</script>
+</body>
+</html>

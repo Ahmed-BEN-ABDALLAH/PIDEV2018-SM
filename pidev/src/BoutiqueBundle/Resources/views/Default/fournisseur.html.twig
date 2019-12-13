@@ -1,0 +1,72 @@
+{% extends "template.html.twig" %}
+{% block body %}
+
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
+    <link href= "{{ asset('plugins/jquery-ui/jquery-ui.css') }} " rel="stylesheet">
+    <link href="{{ asset('plugins/bootstrap/css/bootstrap.min.css')  }} " rel="stylesheet">
+    <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }} " rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/rs-plugin/css/settings.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/selectbox/select_option1.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/owl-carousel/owl.carousel.css')}}" media="screen">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/isotope/jquery.fancybox.css')}} ">
+    <link rel="stylesheet" type="text/css" href="{{ asset('plugins/isotope/isotope.css')}}">
+
+</head>
+<body>
+
+<link href="{{ asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
+<script language="JavaScript" src="{{ absolute_url(asset('js/jquery-3.2.1.min.js')) }}" type="text/javascript"></script>
+<script language="JavaScript" src="{{ (asset('https://code.jquery.com/jquery-1.12.4.js')) }}" type="text/javascript"></script>
+<script language="JavaScript" src="{{ (asset('https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js')) }}" type="text/javascript"></script>
+
+<table id="datatable" border="0" class="table table-striped">
+        <thead>
+        <tr class="active">
+            <th>Id</th>
+            <th>Nom</th>
+
+            <th>e-mail</th>
+
+            <th>approuver</th>
+            <th>désapprouver</th>
+
+        </tr>
+        </thead>
+    <tfoot>
+    <tr>
+        <th>Id</th>
+        <th>Nom</th>
+
+        <th>e-mail</th>
+
+        <th>approuver</th>
+        <th>désapprouver</th>
+
+    </tr>
+    </tfoot>
+    <tbody>
+        {% for  i in user %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.username }}</td>
+
+                <td>{{ i.email }}</td>
+                <td> <a data-toggle="modal" href="{{ path('ValueFournisseur',{'id':i.id}) }}" class="btn-block">accepter</a></td>
+                <td> <a data-toggle="modal" href="{{ path('desaprouverFournisseur',{'id':i.id}) }}" class="btn-block">bloquer</a></td>
+
+
+            </tr>
+        {% endfor %}
+    </tbody>
+    </table>
+<button type="button" class="btn btn-outline-primary"><a href="{{ path('AfficheP_Admin') }}"><span>Consulter les produits</span></a></button>
+
+<script>
+    $(document).ready(function() {
+        $('#datatable').DataTable();
+    } );
+</script>
+</body>
+
+{% endblock %}

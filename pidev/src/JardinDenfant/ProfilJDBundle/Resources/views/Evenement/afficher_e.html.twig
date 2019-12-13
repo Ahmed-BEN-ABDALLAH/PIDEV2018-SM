@@ -1,0 +1,82 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+
+    {% for i in evts %}
+
+<div class="media courseList">
+
+
+    <a class="media-left" href="single-blog-left-sidebar.html">
+
+        <img class="media-object" src="{{ asset('images/' ~ i.image) }}"   alt="Image"  >
+        <span class="sticker-round bg-color-1">{{ i.start |date('y-m-d')}}</span>
+    </a>
+    <div class="media-body">
+        <h3 class="media-heading"><a href="single-blog-left-sidebar.html" class="color-1">{{ i.nonE }}</a></h3>
+        <ul class="list-inline">
+            <li><i class="fa fa-user" aria-hidden="true"></i>{{ app.user.username }}</li>
+
+        </ul>
+        <p>
+
+        <p><strong style="color: yellowgreen"> A propos l'evenement </strong>{{ i.apropos }} </p>
+        <p><strong style="color: coral"> heure d'evenement</strong>{{ i.heure }}</p>
+        <p> <strong style="color: deepskyblue"> duree:</strong> {{ i.duree }}</p>
+        <p><strong style="color: coral"> heure d'evenement</strong>{{ i.heure }}</p>
+        <p> <strong style="color: #bfff57">  adresse:</strong> {{ i. adresse }}</p>
+        <p> <strong style="color: #ff5dcd">   nbre de place max:</strong> {{ i.nbrPlaceMax }}</p>
+
+        </p><br>
+
+
+    </div>
+
+    {% if i.ide in tab %}
+        <a href="{{ path('annulerInscrit',{'ide':i.ide} )}}" >
+            <button type="button" name ="submit" class="btn btn-warning btn-pill"> annuler </button>
+        </a>
+
+    {%else%}
+    <a href="{{ path('inscrirer',{'ide':i.ide} )}}" >
+        <button type="button" name ="submit" class="btn btn-warning btn-pill"> s'inscrire </button>
+    </a>
+
+    {% endif%}
+
+
+
+
+
+
+
+
+
+
+    <br>
+        <br>
+        <br>
+    </div>
+
+
+    {% endfor %}
+
+
+
+
+
+
+
+    <div class="pagerArea txt-center" style="text-align: center">
+        {{ knp_pagination_render(evts) }}
+    </div>
+
+
+
+
+
+
+
+
+
+{% endblock %}

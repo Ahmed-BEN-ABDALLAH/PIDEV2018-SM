@@ -1,0 +1,153 @@
+{% extends '@Admin/Admin.html.twig' %}
+{% block cc %}
+    <script language="JavaScript" src="{{ asset('jquery-3.2.1.min.js') }}" type="text/javascript"></script>
+
+
+
+
+    <script>
+        $(document).ready(function () {
+
+
+                $(".Accepté").html("<img alt=\"\" src=\"{{ asset('images/flat-color-icons-svg/checkmark.svg') }}\" title=\"approuver\" width=\"25px\" height=\"15px\"> ")
+                $(".Refusé").html("approuver")
+                $(".dRefusé").html("<img alt=\"\" src=\"{{ asset('images/flat-color-icons-svg/cancel.svg') }}\" title=\"Réfusé\" width=\"25px\" height=\"15px\">\n")
+
+
+        });
+
+
+    </script>
+    <script src="{{ asset('jquery-ui.js') }}"></script>
+    <script type="text/javascript">
+
+
+
+        $(document).ready(function () {
+            $('#datatable').dataTable();
+        });
+    </script>
+
+
+
+
+    <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css')}}" >
+    <script language="JavaScript" src="{{ absolute_url(asset('js/jquery.dataTables.min.js')) }}" type="text/javascript"></script>
+    <script language="JavaScript" src="{{ absolute_url(asset('js/dataTables.bootstrap.min.js')) }}" type="text/javascript"></script>
+    <script language="JavaScript" src="{{ absolute_url(asset('js/dataTables.responsive.min.js')) }}" type="text/javascript"></script>
+    <script language="JavaScript" src="{{ absolute_url(asset('js/responsive.bootstrap.min.js')) }}" type="text/javascript"></script>
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap.min.css') }}" />#}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/dataTables.bootstrap.min.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/responsive.bootstrap.min.css') }}" />
+    <!-- Bootstrap 3.3.6 -->
+
+    <table id="datatable" style="background: mediumvioletred" border="0" class="table table-striped">
+        <thead>
+        <tr class="active">
+
+            <th><i class="fa fa-angellist"></i></th>
+            <th ><i class="fa fa-phone"></i></th>
+            <th><i class="fa fa-map-marker"></i></th>
+            <th><i class="fa fa-male"></i><i class="fa fa-female"></i></th>
+            <th><i class="fa fa-eject"></i></th>
+            <th><i class="fa fa-image"></i></th>
+            <th><i class="fa fa-check"></i></th>
+            <th><i class="fa fa-times"></i></th>
+            <th><i class="fa fa-edit"></i></th>
+            <th><i class="fa fa-times-circle-o"></i></th>
+        </tr>
+        </thead>
+
+        {% for i in all %}
+            <tr >
+                <td >{{ i.nom }}</td>
+                <td >{{ i.tel }}</td>
+                <td>{{ i.adresse }}</td>
+                <td >{{ i.genre }}</td>
+                <td ><div class="etat" id="newetat{{ i.id }}">{{ i.etat }}</div></td>
+                <td><img src="{{ asset(i.image) }}" height="50px" width="50px" > </td>
+                <td><a  class="appro{{ i.id }} {{ i.etat }} approuver{{ i.id }}" id="{{ i.id }}" name="app">approuver</a></td>
+                <td><a class="desapro{{ i.id }} desaprouver{{ i.id }}  d{{ i.etat }}  " id="desap{{ i.id }}">désapprouver</a></td>
+
+
+                <td><a  href="{{ path('updateDo',{'id':i.id}) }}" >Modifier</a></td>
+                <td><a  href="{{ path('deleteD',{'id':i.id}) }}" >Supprimer</a></td>
+
+                {#
+                                <td><a  href="{{ path('updateEE',{'id':i.id}) }}">désaprové</a></td>
+                #}
+            </tr>
+
+
+
+
+
+            <script>
+
+
+
+
+
+
+
+                /*----------------desaprové--------------------------*/
+
+                $("#desap{{i.id }}").click(function(){
+                    desapro({{i.id }})
+                });
+
+
+                function desapro(id) {
+                    $.ajax({
+                        url: "http://localhost/datatable_21/web/app_dev.php/desapro"+id,
+                        success: function(result){
+                            console.log(id)
+                            $("#newetat"+id).html("Refusé");
+                            $(".desapro"+id).replaceWith(" <img alt=\"\"  class=\" desaprou{{ i.id }} \"  src=\"{{ asset('images/flat-color-icons-svg/cancel.svg') }}\" title=\"Réfusé\" width=\"25px\" height=\"15px\">\n");
+                            $(".appro"+id).html("approuver")
+                            $(".approu"+id).html("approuver")
+
+                        }}
+                    );
+                }
+
+/*----------------Apprové--------------------------*/
+
+
+                $("#{{i.id }}").click(function(){
+                    appro({{i.id }})
+                });
+
+
+
+                function appro(id) {
+                    $.ajax({
+                        url: "http://localhost/datatable_21/web/app_dev.php/appro"+id,
+                        success: function(result){
+                        console.log(id)
+                            $("#newetat"+id).html("Accepté");
+                            $(".appro"+id).replaceWith("<img alt=\"\" class=\" approu{{ i.id }} \" src=\"{{ asset('images/flat-color-icons-svg/checkmark.svg') }}\" title=\"approuver\" width=\"25px\" height=\"15px\"> ");
+                            $(".desaprouver"+id).html("désapprouver")
+                            $(".desaprou"+id).html("désapprouver")
+
+                        }}
+                    );
+                }
+            </script>
+
+
+
+
+
+
+
+
+        {% endfor %}
+
+    </table>
+
+
+
+
+
+{% endblock %}

@@ -1,0 +1,173 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+
+    <link rel="script" href="{{ asset('jquery-3.2.1.min.js') }}">
+    <link rel="script" href="{{ asset('gmaps/gmaps.js') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('examples.css') }}" />
+    <input id="lat"  type="hidden" value={{ m.latitude }}>
+    <input id="lng" type="hidden" value={{ m.longitude}}>
+    <!-- MAIN SECTION -->
+    <section class="mainContent full-width clearfix">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-md-6 col-sm-7 col-xs-12">
+
+                    <div class="product-gallery-content" >
+                        <ul class="product-gallery-preview">
+                            <li id="preview01" class="current">
+                                <img src="{{ asset('uploads/images/' ~ m.image) }}" alt="Product" class="img-responsive" style="height: 500px;">
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+                <br><br><br>
+                <div class="col-md-6 col-sm-5 col-xs-12">
+                    <div class="product-info">
+                        <div class="price">
+                            <span>{{ m.nomJD }} </span>
+                        </div>
+                        <h1 class="product-title" style="font-size: medium;"><div style="font-size: larger">{{ m.adresse }}</div><br>
+                            {{ m.description }}.
+                        </h1>
+<h3><label style="color: #4cae4c">Note:</label>  <a style="font-weight: bold;color: #3299ae;">{{ m.rating }}</a></h3>
+                        {% if is_granted('IS_AUTHENTICATED_REMEMBERED')%}
+                            {% if app.user.id != m.numauth %}
+                                <div class="add-cart">
+                                    {{ form_start(form) }}
+                                    <div class="count-input" style="width: 500px;">
+
+                                        {{ form_widget(form.rating) }}
+
+
+                                    </div>
+                                    {{ form_widget(form.Voter, { 'attr': {'class': "add-to-cart btn btn-primary"} }) }}
+
+                                    {{ form_end(form) }}
+                                </div>
+                            {% endif %}
+
+
+                        {% endif %}
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <section class="product-review clearfix">
+        <div class="container">
+
+            <div class="tabCommon">
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#menu1">Adresse</a></li>
+                    <li><a data-toggle="tab" href="#menu2">Contact</a></li>
+
+                </ul>
+
+                <div class="tab-content">
+                    <div id="menu1" class="tab-pane fade in active">
+
+                        <div class="media addressContent">
+
+                            <div class="media-body" style="text-align: center;">
+                                <h3 class="media-heading">Adresse jardin</h3>
+                                <p>{{ m.adresse}}</p>
+                            </div>
+
+
+                            <div class="span11" >
+                                <div id="map"></div>
+                                <script >
+                                    var map;
+                                    var markers = [];
+                                    var latt = document.getElementById('lat').value ;
+                                    var lngg= document.getElementById('lng').value;
+
+                                    var marker;
+                                    function initMap() {
+                                        var lat_lng = {lat: 35.08672, lng: 10};
+                                        var mardker = {lat: parseFloat(latt), lng: parseFloat(lngg)};
+                                        map = new google.maps.Map(document.getElementById('map'), {
+                                            zoom: 6,
+                                            center: lat_lng,
+                                            mapTypeId: google.maps.MapTypeId.TERRAIN
+                                        });
+
+                                        marker = new google.maps.Marker({
+                                            position: mardker,
+                                            map: map
+                                        });
+                                        markers.push(marker);
+
+                                    }
+                                </script>
+                                <script async defer src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyAuFusBAC3vYNl0ye8bXOk0nGhGUo109qE&callback=initMap') }}">
+                                </script>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                    <div id="menu2" class="tab-pane fade">
+
+
+                        <div class="row">
+
+                            <div class="col-sm-4 col-xs-12">
+                                <div class="media addressContent">
+
+
+                                    <table>
+                                        <tr>
+                                            <td> <span class="media-left bg-color-2" href="#">
+                <i class="fa fa-phone" aria-hidden="true"></i>
+              </span></td>
+                                            <td>  <div class="media-body">
+                                                    <h3 class="media-heading">Phone:</h3>
+                                                    <p>{{ m.num }}</p>
+                                                </div></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+                            <div class="col-sm-4 col-xs-12">
+                                <div class="media addressContent">
+                                    <table>
+                                        <tr>
+                                            <td> <span class="media-left bg-color-3" href="#">
+                <i class="fa fa-envelope-o" aria-hidden="true"></i>
+              </span></td>
+                                            <td> <div class="media-body">
+                                                    <h3 class="media-heading">Email:</h3>
+                                                    <p>mail@gmail.com
+                                                    </p>
+                                                </div></td>
+                                        </tr>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <br>
+
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/starrating/css/rating.css') }}" />
+    <script src="{{ asset('jquery-3.2.1.min.js') }}"></script>
+    <script src="{{ asset('bundles/starrating/js/rating.js') }}"></script>
+{% endblock %}
+
+

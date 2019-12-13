@@ -1,0 +1,35 @@
+{% extends "template.html.twig" %}
+
+{% block body %}
+
+
+
+    <table class="table table-striped">
+        <thead>
+        <tr class="active">
+            <th>Id</th>
+            <th>Nom</th>
+            <th>Stock</th>
+            <th>Sexe</th>
+            <th>Age</th>
+            <th>prix</th>
+        </tr>
+        </thead>
+
+        {% for i in produit %}
+            <tr>
+                <td>{{ i.id }}</td>
+                <td>{{ i.name }}</td>
+                <td>{{ i.stock }}</td>
+                <td>{{ i.genre }}</td>
+                <td>{{ i.age }}</td>
+                <td>{{ i.prix }}</td>
+                <td><a href="{{ path('boutique_supprimer_produit',{'id':i.id}) }}"><i class="medium material-icons "> cancel</i></a></td>
+                <td><a href="{{ path('modifier',{'id':i.id}) }}"><i class="medium material-icons "> create</i></a></td>
+
+            </tr>
+        {% endfor %}
+
+    </table>
+
+{% endblock %}

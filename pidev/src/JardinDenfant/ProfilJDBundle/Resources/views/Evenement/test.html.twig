@@ -1,0 +1,81 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+
+    <section class="mainContent full-width clearfix">
+
+    <div class="container">
+
+
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
+    <div class="" id="kwikCalenderId">
+        <div id="kwik-calendar-holder" class="kwik-calendar-holder" data-position="pos-top"></div>
+    </div>
+    <br>
+    <br>
+    <br>
+    </div>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+
+        $(document).ready(function() {
+            $.ajax({
+                type: 'POST',
+                url: '{{ path('calendar_data') }}',
+                data: '',
+
+                success: function (response) {
+                    $tableauEvenements = [];
+                    response.listEvenements.map(function(item) {
+                        $tableauEvenements.push({
+                            "eventDate"             : item.date,
+                            "eventImage"            : '{{ asset('images/3.jpg') }}',
+
+
+                            "eventDescription"      : item.description,
+                            "eventCategory"         : item.categorie,
+                            //"eventLocation"         : item.local,
+                            "eventTitle"            : item.titre,
+                            //"eventCost"             : item.prix,
+                            //"eventLatLng": {'lat': '51.52290101280822', 'lng': '-0.1549250146117629'},
+                            //"eventBookingURL": item.lien
+
+                        });
+                    });
+                    $listeCategories = {};
+                    response.listCategories.map(function(item) {
+                        //$.each( response.listCategories, function( key, value ) {
+                        $listeCategories[item.libelle] = item.couleur ;
+                    });
+                    jQuery('.kwik-calendar-holder').kwikEventsCalendar({
+                        callback: function () {
+                            //$("#kwikCalenderId").attr('style',' font-size: 500%;');
+                        },
+                        featuredPosition: 'pos-top',
+                        defaultLang: 'fr',
+                        defaultView: 'month',
+                        featuredBackground: '#3e9296',
+                        featuredEventID: '0',
+                        featuredWidth: '30',
+                        eventCategories: $listeCategories,
+                        eventsList: $tableauEvenements
+                    })
+                }
+
+            })
+        })
+
+
+
+
+
+    </script>
+{% endblock %}

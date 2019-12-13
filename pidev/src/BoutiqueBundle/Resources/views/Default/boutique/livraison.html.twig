@@ -1,0 +1,43 @@
+{% extends 'template.html.twig' %}
+    {% block body %}
+        <section class="mainContent full-width clearfix">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="alert alert-success alert-dismissible alt" role="alert">
+                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">x</span></button>
+                            <span class="successAlert"><i class="fa fa-check" aria-hidden="true"></i></span>
+                            Merci Monsieur/Madame {{ nomuser }}! votre commande a été valider
+                        </div>
+                    </div>
+                    <div class="col-xs-12">
+                        <div class="lowerPartTitle">
+                            <h4>carte information</h4>
+                            <p>Merci Monsieur/Madame pour votre participation dans notre site, votre commande sera bientôt arriver à la destination ci-dessous ; Si il y'a quelques problemes n'hésiter pas de nous contacter sur notre adresse mail </p>
+                            <h4>Votre id de payement: <span>#{{ iduser }}</span></h4>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <dl class="dl-horizontal addressInfo">
+                            <dt>Address:</dt>
+                            <dd>{{ adresse }} <br>{{ rue }}</dd>
+                        </dl>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="priceBtn text-right">
+                            <h5>Total: <span>{{ prixtotal }}dt</span></h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="row">
+            <div class="col col-md-8"></div>
+        <div>
+        <button type="button" class="btn btn-outline-primary"><a href="{{ path('pdf') }}"><span>Telecharger pdf</span></a><i class="fa fa-rocket"></i></button>
+        </div>
+        </div>
+        <br>
+        <br>
+
+{% endblock %}

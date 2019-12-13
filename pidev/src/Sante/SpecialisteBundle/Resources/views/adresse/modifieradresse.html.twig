@@ -1,0 +1,65 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        {% block menu_sante %}
+            <section class="pageTitleSection">
+                <div class="container">
+                    <div class="pageTitleInfo">
+                        <h2>Santé</h2>
+                        <ol class="breadcrumb">
+                            <li><a href="index-2.html">Accueil</a></li>
+                            <li class="active">Profil</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        {% endblock  %}
+        <br>
+        <br>
+        <div class="container"  style="margin:auto ">
+
+            <div class="row">
+                <div class="col-xs-12" >
+                    <div class="tabCommon">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" href="#home">Informations</a></li>
+                            <li><a data-toggle="tab" href="#menu1">Mes articles</a></li>
+                            <li><a data-toggle="tab" href="#menu2">Ajouter article</a></li>
+                        </ul>
+                        <div class="tab-content" style="width: 1200px; margin-right: 10px">
+                            <div id="leftHome" class="tab-pane fade in active" style="margin-right: 10px">
+                                <div class="media">
+                                    <div class="container" >
+                                        <div class="sectionTitle text-center" style="font-size: small">
+
+                                            <h2>
+
+                                                <span class="shape shape-left bg-color-4"></span>
+                                                <span style=" font-size: 27px;">
+                                                    <a href="{{ path('modifierprofil1',{'id': app.user.id })}}" >Informations personnelles |</a>
+                                                <a style="color:#4b4b4b;text-weight:bold">Adresse cabinet |</a>
+                                                <a href="{{ path('modifierinfocontact',{'id': app.user.id })}}">Information Contact |</a>
+                                             <a href="{{ path('modifierHoraire',{'id': app.user.id })}}" >Horaire du travail </a> </span>
+                                                <span class="shape shape-right bg-color-4"></span>
+                                            </h2>
+                                        </div>
+
+                                       {{ form(f) }}
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    {% endblock %}
+    {% block script1 %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

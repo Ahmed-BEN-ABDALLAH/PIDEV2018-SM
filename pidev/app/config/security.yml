@@ -1,0 +1,37 @@
+security:
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_MEDECIN: ROLE_MEDECIN
+        ROLE_VENDEUR: ROLE_VENDEUR
+        ROLE_JARDIN_ENFANT: ROLE_JD
+        ROLE_ENSEIGNANT: ROLE_ENSEIGNANT
+        ROLE_PARENT: ROLE_PARENT
+        ROLE_BABY_SITTER: ROLE_BS
+
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager # Use form.csrf_provider instead for Symfony <2.4
+                success_handler: redirect.after.login
+            logout:
+                target: /home
+            anonymous:    true
+
+    access_control:
+        - { path: ^/login, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/boutique, role: IS_AUTHENTICATED_ANONYMOUSLY }
+
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
+        - { path: ^/produit/, role: ROLE_RESPENSABLE_GARDE }

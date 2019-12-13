@@ -1,0 +1,70 @@
+{% extends 'template.html.twig' %}
+    {% block body %}
+
+
+<section class="mainContent full-width clearfix">
+    <div class="container">
+        <div class="sectionTitle text-center">
+            <h2>
+                <span class="shape shape-left bg-color-4"></span>
+                <span>Consulter les commandes</span>
+                <span class="shape shape-right bg-color-4"></span>
+            </h2>
+        </div>
+
+        <div class="row">
+
+            {% for com in commande %}
+
+            <div class="col-sm-6 col-xs-12">
+                <div class="accordionCommon" id="accordionOne">
+                    <div class="panel-group" id="accordionFirst">
+                        <div class="panel panel-default">
+                            <a class="panel-heading accordion-toggle bg-color-3" data-toggle="collapse" data-parent="#accordionFirst" href="#collapse-aa">
+                                <span>Where does it come from?</span>
+                                <span class="iconBlock"><i class="fa fa-chevron-down"></i></span>
+                            </a>
+                            <div id="collapse-aa" class="panel-collapse collapse in">
+                                <div class="panel-body">
+                                    <!-------------------->
+                                    {% for i in com %}
+                                            <div class="row">
+                                                <div class="col-sm-12 col-xs-12 block">
+                                                    <div class="media eventContent bg-color-1">
+                                                        <a class="media-left" href="single-event-left-sidebar.html">
+                                                            <img src="{{ asset(i.image) }}" alt="image" class="media-object" width="20%" height="20%">
+                                                        </a>
+                                                        <div class="media-body">
+                                                            <h3 class="media-heading"><a href="single-event-left-sidebar.html">Curabitur tempor metus.</a></h3>
+                                                            <ul class="list-unstyled">
+                                                                <li><i class="fa fa-calendar-o" aria-hidden="true"></i>Age {{ i.age }}</li>
+                                                                <li><i class="fa fa-clock-o" aria-hidden="true"></i>{{ i.quantite }} {{ i.nom }} de la part de {{ i.idc }}</li>
+                                                            </ul>
+                                                            <p>adresse </p>
+                                                            <ul class="list-inline btn-yellow">
+                                                                <li><a href="single-event-left-sidebar.html" class="btn btn-primary">read more</a></li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                    {% endfor %}
+                                    {#{{ dump(commande) }}#}
+
+                                    <!-------------------->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+
+        </div>
+
+
+    </div>
+</section>
+
+{% endblock %}

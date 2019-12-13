@@ -1,0 +1,244 @@
+{% extends '::template.html.twig' %}
+
+    {% block body %}
+        <section class="mainContent full-width clearfix coursesSection">
+            {% block content %}
+                {% block menu_sante %}
+                    <section class="pageTitleSection">
+                        <div class="container">
+                            <div class="pageTitleInfo">
+                                <ol class="breadcrumb">
+                                    <li><a href="">Accueil</a></li>
+                                    <li class="active">Education</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </section>
+                {% endblock  %}
+                <br>
+                <br>
+                <div class="container"  style="margin:auto ">
+
+                    <div class="row">
+                        <div class="col-xs-12" >
+                            <div class="tabCommon">
+
+                                <div class="sectionTitle text-center" style="font-size: small">
+
+                                    <h2>
+
+                                        <span class="shape shape-left bg-color-4"></span>
+                                        <span> Enseignants
+                                               </span>
+                                        <span class="shape shape-right bg-color-4"></span>
+                                    </h2>
+                                </div>
+                                <section class="mainContent full-width clearfix coursesSection">
+                                    <div class="container">
+                                        <div class="row">
+
+                                            <div class="col-md-9 col-sm-8 col-xs-12 pull-right">
+
+                                                <div class="row">
+                                                    {% for ligne in m %}
+                                                        <div class="col-md-4 col-sm-6 col-xs-12 block">
+
+                                                            <div class="thumbnail thumbnailContent">
+                                                               <img src="{{ asset('images/') }}{{ ligne.nomimage }}" alt="image" class="img-responsive" style="width: 303px;height: 200px;">
+                                                                <div class="caption border-color-1">
+                                                                    <h3><a href="=" class="color-1">{{ ligne.nom }} {{ ligne.prenom }}</a></h3>
+                                                                    <ul class="list-inline" style="font-weight: bold">
+                                                                        <li>{{ ligne.adresse }}</li><br>
+                                                                        <li> {{ ligne.special }}</li>
+                                                                    </ul>
+                                                                    <p>{{ ligne.email }}<br><br>Prix par heure:<a style="font-weight: bold;color: #4cae4c;">{{ ligne.prix }}</a>  <br> Nbre d'heure de formation: <a style="font-weight: bold;color: #4cae4c;">{{ ligne.nbr }}</a> </p>
+                                                                    <ul class="list-inline btn-yellow">
+                                                                        <li><a href="{{ path('calculer',{'id':ligne.id}) }}"class="btn btn-primary ">calculer</a></li>
+                                                                    </ul>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                </div>
+                                            </div>
+
+                                            <div class="col-md-3 col-sm-4 col-xs-12 pull-left">
+                                                <aside>
+                                                    <div class="panel panel-default courseSidebar">
+                                                        <div class="panel-heading bg-color-1 border-color-1">
+                                                            <h3 class="panel-title">Recherche</h3>
+                                                        </div>
+                                                        <div class="panel-body">
+                                                            <div class="form-group formField">
+                                                                <div class="dropGeneral roundOne">
+                                                                    <form method="post">
+                                                                        <input type="text" class="form-control" placeholder="specialité"  name="special" >
+                                                                        <div style="margin-right: 0px;"><input class="btn btn-warning " type="submit" value="Chercher"  name="cherhcer" >  </div>                                                              </form>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        </br>
+                                                    </div>
+                                                </aside>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+                                </section>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <br>
+            {% endblock %}
+            {% block script1 %}
+                {{ parent() }}
+            {% endblock %}
+
+
+
+        </section>
+    {% endblock %}
+
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures ;color: #7c618a">{{ ligne.id }}</td>#}
+    {#<td style="background-color: #00A8FF;color: #7c618a"><img src="{{ asset('images/') }}{{ ligne.nomimage }}" style="width: 200px;height: 200px"></td>#}
+
+
+
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.nom }}</td>#}
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.prenom }}</td>#}
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.adresse }}</td>#}
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.special }}</td>#}
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.prix }}</td>#}
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.numtel }}</td>#}
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.nbr }}</td>#}
+    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a "> <a href="{{ path('calculer',{'id':ligne.id}) }}"> calculer </a> </td>#}
+
+
+
+
+
+
+    {#{% block style %}#}
+        {#{{ parent() }}#}
+    {#{% endblock %}#}
+    {#{% block content %}#}
+        {#{% block menu_sante %}#}
+            {#<section class="pageTitleSection">#}
+                {#<div class="container">#}
+                    {#<div class="pageTitleInfo">#}
+
+                        {#<ol class="breadcrumb">#}
+                            {#<li><a href="index-2.html">Accueil</a></li>#}
+                            {#<li class="active">Profil</li>#}
+                        {#</ol>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</section>#}
+        {#{% endblock  %}#}
+{#<div class="recherche_p">#}
+
+        {#<form method="post" id="searchthis">#}
+            {#<tr>#}
+                {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a">nom:</td>  <td><input type="text" name="nom" id="search" placeholder="rechercher" ></td>#}
+            {#</tr>#}
+
+            {#<tr style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a"><input type="submit" text="chercher" name="chercher"></tr>#}
+        {#</form>#}
+    {#<style type='text/css'>#}
+
+        {#.recherche_p {#}
+            {#background-color: #eeeeee;#}
+            {#border-style: solid;   /* Style de la bordure  */#}
+            {#border-width: 1px;   /* Epaisseur de la bordure  */#}
+            {#border-color: #dddddd;#}
+              {#/* Espace entre les bords et le contenu : haut droite bas gauche  */#}
+
+        {#}#}
+        {##searchthis #search {#}
+            {#background-color: #ffffff;   /* Couleur de fond */#}
+            {#border-style: solid;   /* Style de la bordure  */#}
+            {#border-width: 1px;   /* Epaisseur de la bordure  */#}
+            {#border-color: #dddddd;   /* Couleur de la bordure  */#}
+             {#/* Espace entre les bords et le contenu : haut droite bas gauche  */#}
+               {#/* Permet d'ajuster la largeur du champ de saisie à 100% */#}
+            {#box-sizing: border-box;   /* Important */#}
+              {#/* Police du texte */#}
+            {#font-size: 12px;   /* Taille de la police du texte */#}
+            {#font-weight: normal;   /* Graisse du texte : normal = normal ; bold = gras */#}
+            {#letter-spacing: 1px;   /* Espacement des caractères */#}
+        {#}#}
+    {#</style>#}
+{#</div>#}
+        {#<div class="hedi" align="center">#}
+            {#<fieldset>#}
+        {#<style>#}
+            {#.cMonTableau3 {#}
+                {#width:400px;#}
+
+
+
+
+                {#border-collapse: collapse;#}
+                {#border-spacing: 10px;  /* Aucun effet avec « collapse » */#}
+                {#border: 15px solid #758de5#}
+            {#}#}
+            {#.cMonTableau3 th, .cMonTableau3 td {#}
+                {#padding: 3px;#}
+                {#border: 1px solid #fff;#}
+                {#text-align: center;#}
+            {#}#}
+        {#</style>#}
+        {#<table class="cMonTableau3">#}
+            {#<tr><th>ID</th><th>IMAGE</th><th>NOM</th><th>PRENOM</th><th>ADRESSE</th><th>SPECIALITE</th><th>PRIX_h</th><th>NUM TEL</th><th>HEURE DE TRAVIL</th><th>PRIX_TOTALE</th></tr>#}
+            {#{% for ligne in m %}#}
+                {#<tr>#}
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures ;color: #7c618a">{{ ligne.id }}</td>#}
+                    {#<td style="background-color: #00A8FF;color: #7c618a"><img src="{{ asset('images/') }}{{ ligne.nomimage }}" style="width: 200px;height: 200px"></td>#}
+
+
+
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.nom }}</td>#}
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.prenom }}</td>#}
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.adresse }}</td>#}
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.special }}</td>#}
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.prix }}</td>#}
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.numtel }}</td>#}
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a ">{{ ligne.nbr }}</td>#}
+                    {#<td style="background-color: #00A8FF;font-variant-ligatures: common-ligatures;color: #7c618a "> <a href="{{ path('calculer',{'id':ligne.id}) }}"> calculer </a> </td>#}
+
+
+
+                {#</tr>            {% endfor %}#}
+
+        {#</table>#}
+
+        {#</fieldset>#}
+        {#</div>#}
+        {#<ul class="list-inline socailLink">#}
+            {#<li><a href="#" class="bg-color-1"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>#}
+            {#<li><a href="#" class="bg-color-2"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>#}
+            {#<li><a href="#" class="bg-color-3"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>#}
+            {#<li><a href="#" class="bg-color-4"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>#}
+            {#<li><a href="#" class="bg-color-5"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>#}
+        {#</ul>#}
+        {#</div>#}
+        {#</div>#}
+
+        {#</div>#}
+        {#</div>#}
+        {#</div>#}
+        {#</div>#}
+        {#</div>#}
+        {#<br>#}
+        {#<br>#}
+    {#{% endblock %}#}
+    {#{% block script1 %}#}
+        {#{{ parent() }}#}
+    {#{% endblock %}#}
+{#{% endblock %}#}
+

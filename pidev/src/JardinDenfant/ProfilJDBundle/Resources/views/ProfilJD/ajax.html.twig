@@ -1,0 +1,65 @@
+
+<h1>Recherche Ajax</h1>
+
+{{ form(form) }}
+<div id="affichage">
+    <table border="1" >
+        <tr>
+            <th>Id</th>
+            <th>Titre</th>
+            <th>Description</th>
+            <th>Date</th>
+
+        </tr>
+        {% for m in blagues  %}
+
+            <tr>
+                <td>{{ m.numauth }}</td>
+                <td>{{ m.nomJD }}</td>
+                <td>{{ m.Description }}</td>
+                <td>{{ m.adresse}}</td>s
+
+            </tr>
+
+        {% endfor %}
+
+    </table>
+</div>
+
+<div id="div"></div>
+<script src="{{ asset('js/jquery-3.1.1.min.js') }}"></script>
+<script>
+    $( "#recherche_form_adresse").keyup(
+
+        function(){
+            var adresse=$('#recherche_form_adresse').val();
+            //alert(adresse);
+            var DATA = 'adresse='+adresse;
+            //alert(DATA);
+
+            $.ajax({
+
+                type: "POST",
+                url: "{{ path('ajax')}}",
+
+                data:DATA,
+                success: function (data) {
+                    console.log(data);
+
+                    $( "#div" ).html( "<table id='res' border='1'>" +
+                        "<td>Id</td>" +
+                        "<td>Titre</td>" +
+                        "<td>Description</td></table>");
+                    $.each(data,function(k,el) {
+                        $("#affichage").hide();
+                        $('#res').append(
+                            "<tr>"+
+                            "<td>"+el.nomJD+"</td>"+
+                            "<td>"+el.adresse+"</td>"+
+
+                            "<td>"+el.description+"</td>"+
+
+                            "</tr>");
+                    });}
+            });});
+</script>

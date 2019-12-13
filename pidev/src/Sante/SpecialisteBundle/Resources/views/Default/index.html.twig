@@ -1,0 +1,625 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+
+        <link rel="stylesheet" href="{{ asset('notif.css') }}">
+        <script src="{{ asset('jquery.min.js') }}"></script>
+        <script>
+            $(document).ready(function(){
+                $(".notification").each(function(){
+                    $(this).css('top',65*$(this).index()+'px');
+                    $(".notification").animate({'left':'0px'});
+                    $(".notification").delay(8000).fadeOut("low");
+                });
+                $(".notification").click(function(){
+                    $(this).hide();
+                })
+            });
+        </script>
+
+
+    {% for m in conseil  %}
+        <div class="notification">{{ m.titre }}<br>{{ m.contenu }}</div>
+    {% endfor %}
+
+        <!-- BANNER -->
+        <section class="bannercontainer bannercontainerV1">
+            <div class="fullscreenbanner-container">
+                <div class="fullscreenbanner">
+                    <ul>
+                        <li data-transition="fade" data-slotamount="5" data-masterspeed="700" data-title="Slide 1">
+                            <img src="{{ asset('img/home/slider/slider-1.jpg') }}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                            <div class="slider-caption container">
+                                <div class="tp-caption rs-caption-1 sft start"
+                                     data-hoffset="0"
+                                     data-y="200"
+                                     data-speed="800"
+                                     data-start="1000"
+                                     data-easing="Back.easeInOut"
+                                     data-endspeed="300">
+                                    All for Kids
+                                </div>
+
+                                <div class="tp-caption rs-caption-2 sft"
+                                     data-hoffset="0"
+                                     data-y="265"
+                                     data-speed="1000"
+                                     data-start="1500"
+                                     data-easing="Power4.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     data-captionhidden="off">
+                                    tout ce que vous avez besoin pour votre enfant.
+                                </div>
+                            </div>
+                        </li>
+                        <li data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 2">
+                            <img src="{{ asset('img/home/slider/slider-2.jpg') }}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                            <div class="slider-caption container">
+                                <div class="tp-caption rs-caption-1 sft start text-center"
+                                     data-hoffset="0"
+                                     data-x="center"
+                                     data-y="200"
+                                     data-speed="800"
+                                     data-start="1000"
+                                     data-easing="Back.easeInOut"
+                                     data-endspeed="300">
+                                    Acheter des produits
+                                </div>
+
+                                <div class="tp-caption rs-caption-2 sft text-center"
+                                     data-hoffset="0"
+                                     data-x="center"
+                                     data-y="265"
+                                     data-speed="1000"
+                                     data-start="1500"
+                                     data-easing="Power4.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     data-captionhidden="off">
+                                    dont votre enfant a besoin. <br>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li data-transition="fade" data-slotamount="5" data-masterspeed="700"  data-title="Slide 3">
+                            <img src="{{ asset('img/home/slider/slider-3.jpg') }}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                            <div class="slider-caption container">
+                                <div class="tp-caption rs-caption-1 sft start text-right"
+                                     data-hoffset="0"
+                                     data-y="200"
+                                     data-x="right"
+                                     data-speed="800"
+                                     data-start="1000"
+                                     data-easing="Back.easeInOut"
+                                     data-endspeed="300">
+                                    Ne cherchez plus ailleurs
+                                </div>
+
+                                <div class="tp-caption rs-caption-2 sft text-right"
+                                     data-hoffset="0"
+                                     data-y="265"
+                                     data-x="right"
+                                     data-speed="1000"
+                                     data-start="1500"
+                                     data-easing="Power4.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     data-captionhidden="off">
+                                    Vous trouvez les meilleurs enseignants, spécialistes, baby-sitters, garderies...
+                                </div>
+                            </div>
+                        </li>
+                        <li data-transition="fade" data-slotamount="5" data-masterspeed="1000" data-title="Slide 2">
+                            <img src="{{ asset('img/home/slider/slider-4.jpg') }}" alt="slidebg1" data-bgfit="cover" data-bgposition="center center" data-bgrepeat="no-repeat">
+                            <div class="slider-caption container">
+                                <div class="tp-caption rs-caption-1 sft start text-center"
+                                     data-hoffset="0"
+                                     data-x="center"
+                                     data-y="200"
+                                     data-speed="800"
+                                     data-start="1000"
+                                     data-easing="Back.easeInOut"
+                                     data-endspeed="300">
+                                    Ne cherchez plus ailleurs
+                                </div>
+
+                                <div class="tp-caption rs-caption-2 sft text-center"
+                                     data-hoffset="0"
+                                     data-x="center"
+                                     data-y="265"
+                                     data-speed="1000"
+                                     data-start="1500"
+                                     data-easing="Power4.easeOut"
+                                     data-endspeed="300"
+                                     data-endeasing="Power1.easeIn"
+                                     data-captionhidden="off">
+                                    Vous trouvez les bons plans, des jeux sécurisés...
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- MAIN CONTENT -->
+        <section class="clearfix linkSection hidden-xs">
+            <div class="sectionLinkArea hidden-xs scrolling">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <a href="#ourCourses" class="sectionLink bg-color-1" id="coursesLink">
+                                <i class="fa fa-file-text-o linkIcon border-color-1" aria-hidden="true"></i>
+                                <span class="linkText">Top-Produits</span>
+                                <i class="fa fa-chevron-down locateArrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="#ourTeam" class="sectionLink bg-color-2" id="teamLink">
+                                <i class="fa fa-calendar-o linkIcon border-color-2" aria-hidden="true"></i>
+                                <span class="linkText">Numbers</span>
+                                <i class="fa fa-chevron-down locateArrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="#ourGallery" class="sectionLink bg-color-3" id="galleryLink">
+                                <i class="fa fa-picture-o linkIcon border-color-3" aria-hidden="true"></i>
+                                <span class="linkText">Top-Garderies</span>
+                                <i class="fa fa-chevron-down locateArrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-3">
+                            <a href="#latestNews" class="sectionLink bg-color-4" id="newsLink">
+                                <i class="fa fa-files-o linkIcon border-color-4" aria-hidden="true"></i>
+                                <span class="linkText">Top-Articles</span>
+                                <i class="fa fa-chevron-down locateArrow" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FEATURE SECTION -->
+        <section class="mainContent full-width clearfix featureSection">
+            <div class="container">
+                <div class="sectionTitle text-center">
+                    <h2>
+                        <span class="shape shape-left bg-color-4"></span>
+                        <span>Nos Rubriques</span>
+                        <span class="shape shape-right bg-color-4"></span>
+                    </h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="media featuresContent">
+              <span class="media-left bg-color-1">
+                <i class="fa fa-graduation-cap bg-color-1" aria-hidden="true"></i>
+              </span>
+                            <div class="media-body">
+                                <h3 class="media-heading color-1">Education</h3>
+                                <p>Vous avez besoin d'un enseignant à domicile pour votre enfant, des bons livres pour votre enfant,n'hesitez pas à conulter cette rubrique...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="media featuresContent">
+              <span class="media-left bg-color-2">
+                <i class="fa fa-leaf bg-color-2" aria-hidden="true"></i>
+              </span>
+                            <div class="media-body">
+                                <h3 class="media-heading color-2">Baby-sitters</h3>
+                                <p>Vous avez besoin d'un baby sitter, vous trouvez des differents profils.Vous pouvez les contacter,télecharcher leurs cv...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="media featuresContent">
+              <span class="media-left bg-color-3">
+                <i class="fa fa-car bg-color-3" aria-hidden="true"></i>
+              </span>
+                            <div class="media-body">
+                                <h3 class="media-heading color-3">Shopping en ligne</h3>
+                                <p>Des differents produits pour votre enfant sont à votre disposition.Vous pouvez commander en ligne pour que le produit arrive chez vous.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="media featuresContent">
+              <span class="media-left bg-color-4">
+                <i class="fa fa-cutlery bg-color-4" aria-hidden="true"></i>
+              </span>
+                            <div class="media-body">
+                                <h3 class="media-heading color-4">Loisirs</h3>
+                                <p>Vous n'avez pas confiance aux sites de loisirs pour votre enfant,notre site mais en votre disposition des jeux, des quiz, des feuilles de coloriage.....</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="media featuresContent">
+              <span class="media-left bg-color-5">
+                <i class="fa fa-heart bg-color-5" aria-hidden="true"></i>
+              </span>
+                            <div class="media-body">
+                                <h3 class="media-heading color-5">Santé</h3>
+                                <p>Vous chercher un pédiatre ou un prthophoniste pour enfant! Ne cherchez plus ailleurs... </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12">
+                        <div class="media featuresContent">
+              <span class="media-left bg-color-6">
+                <i class="fa fa-shield bg-color-6" aria-hidden="true"></i>
+              </span>
+                            <div class="media-body">
+                                <h3 class="media-heading color-6">Garderie</h3>
+                                <p>Nous offrons pour vous une bonne liste de garderies et des evénements.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PROMOTION SECTION-->
+        <section class="promotionWrapper" style="background-image:url({{ asset('img/home/promotion-1.jpg') }});">
+            <div class="container">
+                <div class="promotionInfo">
+                    <h2>Voulez-vous nous contacter?</h2>
+                    <p>Passez par ce formulaire</p>
+                    <a href="{{ path('my_app_mail_homepage') }}" class="btn btn-primary"><i class="fa fa-phone" aria-hidden="true"></i>Contact</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHITE SECTION -->
+        <section class="whiteSection full-width clearfix coursesSection" id="ourCourses">
+            <div class="container">
+                <div class="sectionTitle text-center">
+                    <h2>
+                        <span class="shape shape-left bg-color-4"></span>
+                        <span>Top-Produits</span>
+                        <span class="shape shape-right bg-color-4"></span>
+                    </h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 col-xs-12 block">
+                        <div class="thumbnail thumbnailContent">
+                            <a href="course-single-left-sidebar.html"><img src="{{ asset('img/home/courses/course-1.jpg') }}" alt="image" class="img-responsive"></a>
+                            <div class="sticker bg-color-1">50</div>
+                            <div class="caption border-color-1">
+                                <h3><a href="course-single-left-sidebar.html" class="color-1">Morbi scelerisque nibh.</a></h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-calendar-o" aria-hidden="true"></i>Age 2 to 4 Years</li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>9.00AM-11.00AM</li>
+                                </ul>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                                <ul class="list-inline btn-yellow">
+                                    <li><a href="cart-page.html" class="btn btn-primary "><i class="fa fa-shopping-basket " aria-hidden="true"></i>Add to Cart</a></li>
+                                    <li><a href="course-single-left-sidebar.html" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> More</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12 block">
+                        <div class="thumbnail thumbnailContent">
+                            <a href="course-single-left-sidebar.html"><img src="{{asset('img/home/courses/course-2.jpg')}}" alt="image" class="img-responsive"></a>
+                            <div class="sticker bg-color-2">50</div>
+                            <div class="caption border-color-2">
+                                <h3><a href="course-single-left-sidebar.html" class="color-2">Phasellus convallis eros.</a></h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-calendar-o" aria-hidden="true"></i>Age 2 to 4 Years</li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>9.00AM-11.00AM</li>
+                                </ul>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                                <ul class="list-inline btn-green">
+                                    <li><a href="cart-page.html" class="btn btn-primary "><i class="fa fa-shopping-basket " aria-hidden="true"></i>Add to Cart</a></li>
+                                    <li><a href="course-single-left-sidebar.html" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> More</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12 block">
+                        <div class="thumbnail thumbnailContent">
+                            <a href="course-single-left-sidebar.html"><img src="{{ asset('img/home/courses/course-3.jpg') }}" alt="image" class="img-responsive"></a>
+                            <div class="sticker bg-color-3">50</div>
+                            <div class="caption border-color-3">
+                                <h3><a href="course-single-left-sidebar.html" class="color-3">Suspendisse a libero da.</a></h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-calendar-o" aria-hidden="true"></i>Age 2 to 4 Years</li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>9.00AM-11.00AM</li>
+                                </ul>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                                <ul class="list-inline btn-red">
+                                    <li><a href="cart-page.html" class="btn btn-primary "><i class="fa fa-shopping-basket " aria-hidden="true"></i>Add to Cart</a></li>
+                                    <li><a href="course-single-left-sidebar.html" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> More</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12 block">
+                        <div class="thumbnail thumbnailContent">
+                            <a href="course-single-left-sidebar.html"><img src="{{asset('img/home/courses/course-4.jpg') }}" alt="image" class="img-responsive"></a>
+                            <div class="sticker bg-color-4">$50</div>
+                            <div class="caption border-color-4">
+                                <h3><a href="course-single-left-sidebar.html" class="color-4">Aenean cursus urna nec.</a></h3>
+                                <ul class="list-unstyled">
+                                    <li><i class="fa fa-calendar-o" aria-hidden="true"></i>Age 2 to 4 Years</li>
+                                    <li><i class="fa fa-clock-o" aria-hidden="true"></i>9.00AM-11.00AM</li>
+                                </ul>
+                                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. </p>
+                                <ul class="list-inline btn-sky">
+                                    <li><a href="cart-page.html" class="btn btn-primary "><i class="fa fa-shopping-basket " aria-hidden="true"></i>Add to Cart</a></li>
+                                    <li><a href="course-single-left-sidebar.html" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> More</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLOR SECTION -->
+
+
+        <!-- WHITE SECTION -->
+<section class="whiteSection full-width clearfix homeGallerySection" id="ourGallery">
+    <div class="container">
+        <div class="sectionTitle text-center">
+            <h2>
+                <span class="shape shape-left bg-color-4"></span>
+                <span>Top-Garderies</span>
+                <span class="shape shape-right bg-color-4"></span>
+            </h2>
+        </div>
+
+        <div class="row">
+
+        </div>
+        <div class="row isotopeContainer" id="container">
+            <div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector charity">
+
+                <div class="teamInfo">
+
+                    <h3><a href="{{ path('profil',{'numauth':j1.numauth} )}}">{{ j1.nomJD }}</a></h3>
+
+                </div>
+
+                <article class="">
+
+                    <figure>
+                        <img src="{{ asset('uploads/images/' ~ j1.image) }}" alt="image" class="img-rounded" style="width: 300px;height: 200px;">
+                        <div class="overlay-background">
+                            <div class="inner"></div>
+                        </div>
+                        <div class="overlay">
+                            <a class="fancybox-pop" rel="portfolio-1" href="{{ asset('uploads/images/' ~ j1.image) }}">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </figure>
+                </article>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector nature">
+                <div class="teamInfo">
+                    <h3><a href="{{ path('profil',{'numauth':j2.numauth} )}}">{{ j2.nomJD }}</a></h3>
+
+                </div>
+                <article class="">
+                    <figure>
+                        <img src="{{ asset('uploads/images/' ~ j2.image) }}" alt="image" class="img-rounded" style="width: 300px;height: 200px;">
+                        <div class="overlay-background">
+                            <div class="inner"></div>
+                        </div>
+                        <div class="overlay">
+                            <a class="fancybox-pop" rel="portfolio-1" href="{{ asset('uploads/images/' ~ j2.image) }}">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </figure>
+                </article>
+            </div>
+
+            <div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector nature">
+                <div class="teamInfo">
+                    <h3><a href="{{ path('profil',{'numauth':j3.numauth} )}}">{{ j3.nomJD }}</a></h3>
+
+                </div>
+                <article class="">
+                    <figure>
+                        <img src="{{ asset('uploads/images/' ~ j3.image) }}" alt="image" class="img-rounded" style="width: 300px;height: 200px;">
+                        <div class="overlay-background">
+                            <div class="inner"></div>
+                        </div>
+                        <div class="overlay">
+                            <a class="fancybox-pop" rel="portfolio-1" href="{{ asset('uploads/images/' ~ j3.image) }}">
+                                <i class="fa fa-search-plus" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </figure>
+                </article>
+            </div>
+
+
+        </div>
+
+<br><br><br>
+
+    </div>
+
+        <!-- COUNT UP SECTION-->
+        <section class="countUpSection">
+            <div class="container">
+                <div class="sectionTitleSmall">
+                    <h2>Nombres</h2>
+                    <p>Nous avons beaucoup de partenaires</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-3 col-xs-12">
+                        <div class="text-center">
+                            <div class="counter">2</div>
+                            <div class="counterInfo bg-color-1">Enseignants</div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12">
+                        <div class="text-center">
+                            {% for m in p %}
+                            <div class="counter">{{ m.nb }}</div>
+                            <div class="counterInfo bg-color-2">Pédiatres</div>
+
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12">
+                        <div class="text-center">
+                            {% for o in o %}
+                            <div class="counter">{{ o.nb }}</div>
+                            <div class="counterInfo bg-color-3">Orthopho</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-12">
+                        <div class="text-center">
+                            <div class="counter">7</div>
+                            <div class="counterInfo bg-color-4">Baby-Sitters</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHITE SECTION -->
+        <section class="whiteSection full-width clearfix newsSection" id="latestNews">
+            <div class="container">
+                <div class="sectionTitle text-center">
+                    <h2>
+                        <span class="shape shape-left bg-color-4"></span>
+                        <span>Top-Articles</span>
+                        <span class="shape shape-right bg-color-4"></span>
+                    </h2>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-4 col-xs-12 block">
+                        <div class="thumbnail thumbnailContent">
+                            <a href="single-blog-left-sidebar.html"><img style="width: 500px;height: 200px" src="{{ asset('articles/' ~ a1.image) }}" alt="image" class="img-responsive"></a>
+                            <div class="sticker-round bg-color-1">{{ a1.datepublication[:7] }}</div>
+                            <div class="caption border-color-1">
+                                <h3><a href="single-blog-left-sidebar.html" class="color-1">{{ a1.titre }}.</a></h3>
+                                <ul class="list-inline">
+                                    <li><a ><i class="fa fa-user" aria-hidden="true"></i>{{ a1.nblike }} Likers</a></li>
+                                    <li><a ><i class="fa fa-comments-o" aria-hidden="true"></i>{{ a1.sujet }}</a></li>
+                                </ul>
+                                <p>{{ a1.body[:150]|raw}}.... </p>
+                                <ul class="list-inline btn-yellow">
+                                    <li><a href="{{ path('DetailArticle',{'idarticle':a1.idarticle}) }}" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Détails</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 block">
+                        <div class="thumbnail thumbnailContent">
+                            <a href="single-blog-left-sidebar.html"><img src="{{ asset('articles/' ~ a2.image) }}" style="width: 500px;height: 200px" alt="image" class="img-responsive"></a>
+                            <div class="sticker-round bg-color-2">{{ a2.datepublication[:7] }}</div>
+                            <div class="caption border-color-2">
+                                <h3><a href="single-blog-left-sidebar.html" class="color-2">{{ a2.titre }}.</a></h3>
+                                <ul class="list-inline">
+                                    <li><a ><i class="fa fa-user" aria-hidden="true"></i>{{ a2.nblike }} Likers</a></li>
+                                    <li><a ><i class="fa fa-comments-o" aria-hidden="true"></i>{{ a2.sujet }}</a></li>
+                                </ul>
+                                <p>{{ a2.body[:150]|raw}}.... </p>
+                                <ul class="list-inline btn-green">
+                                    <li><a href="{{ path('DetailArticle',{'idarticle':a2.idarticle}) }}" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Détails</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4 col-xs-12 block">
+                        <div class="thumbnail thumbnailContent">
+                            <a href="single-blog-left-sidebar.html"><img src="{{ asset('articles/' ~ a3.image) }}" alt="image" class="img-responsive" style="width: 500px;height: 200px"></a>
+                            <div class="sticker-round bg-color-3">{{ a3.datepublication[:7] }}</div>
+                            <div class="caption border-color-3">
+                                <h3><a href="single-blog-left-sidebar.html" class="color-3">{{ a3.titre }}.</a></h3>
+                                <ul class="list-inline">
+                                    <li><a ><i class="fa fa-user" aria-hidden="true"></i>{{ a3.nblike }} Likers</a></li>
+                                    <li><a ><i class="fa fa-comments-o" aria-hidden="true"></i>{{ a3.sujet }}</a></li>
+                                </ul>
+                                <p>{{ a3.body[:150]|raw}}.... </p>
+                                <ul class="list-inline btn-red">
+                                    <li><a href="{{ path('DetailArticle',{'idarticle':a3.idarticle}) }}" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Détails</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="btnArea">
+                    <a href="{{ path('listerticle') }}" class="btn btn-primary">Autres articles</a>
+                </div>
+
+            </div>
+            {% for flashMessage in app.session.flashbag.get('success') %}
+
+                <div class="alert alert-success" hidden>
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        </section>
+        <!--------notifMedecin----------------------------------------------------->
+        {% if is_granted('ROLE_MEDECIN') %}
+            {% if notifsaccepte != null %}
+                <div id="notif">L'article{% for noti in notifsaccepte %}
+                    {{noti.titre}},{% endfor %} a été accepté.
+                </div>
+                <script>
+                    window.addEventListener('load', function () {
+                        Notification.requestPermission(function (status) {
+                            // Cela permet d'utiliser Notification.permission avec Chrome/Safari
+                            if (Notification.permission !== status) {
+                                Notification.permission = status;
+                            }
+                        });
+                        if (window.Notification && Notification.permission === "granted") {
+                            var n = new Notification(document.getElementById('notif').textContent);
+                        }
+                        else {
+                            alert("amal !");
+                        }
+
+                    });
+                </script>
+
+            {% endif %}
+            {% if notifsrefus != null %}
+                <div id="notifre">{% for notir in notifsrefus %} L'artticle
+                    {{notir.titre}} a été refusé.{% endfor %}
+                </div>
+                <script>
+                    window.addEventListener('load', function () {
+                        Notification.requestPermission(function (status) {
+                            // Cela permet d'utiliser Notification.permission avec Chrome/Safari
+                            if (Notification.permission !== status) {
+                                Notification.permission = status;
+                            }
+                        });
+                        if (window.Notification && Notification.permission === "granted") {
+                            var n = new Notification(document.getElementById('notifre').textContent);
+                        }
+                        else {
+                            alert("amal !");
+                        }
+
+                    });
+                </script>
+
+            {% endif %}
+        {% endif %}
+        <!-- LIGHT SECTION -->
+    {% endblock %}
+
+

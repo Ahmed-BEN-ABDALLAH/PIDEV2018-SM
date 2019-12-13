@@ -1,0 +1,42 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/style1.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/demo1.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/drop.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/styletable.css')}}" >
+
+
+    <title>Liste des Bons Plans</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1><span align="center">All For Kids</span></h1><br>
+        <span align="center"> <h1>Espace Administration des loisirs</h1></span>
+
+
+    </header>
+
+    <header><h1><span align="center">Liste des Bons Plans</span></h1></header>
+    <table border="2px">
+        <tr><td>Id</td><td>Categorie</td><td>Region</td><td>Adressse</td><td>Suppression</td><td>Modification</td></tr>
+        {% for m in bonplan  %}
+            <tr>
+                <td>{{ m.Id }}</td>
+                <td>{{ m.Categorie }}</td>
+                <td>{{ m.Region }}</td>
+                <td>{{ m.Adresse }}</td>
+
+                <td><a href="{{ path('_supp_bonplan',{'id':m.Id}) }}">delete here</a> </td>
+                <td><a href="{{ path('_modif_bonplan',{'id':m.Id}) }}">update here</a> </td>
+
+            </tr>
+        {% endfor %}
+    </table>
+    <header><h1><span align="center"> <a href="{{ path('_recherche_bonplan')}}">Cliquez ici pour effectuer une recherche</a></span></h1></header>
+
+
+
+</div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+{% extends 'admin.html.twig' %}
+
+{% block body %}
+    <html>
+    <head>
+
+        <title>Ajout Bon Plan</title>
+    </head>
+    <body>
+    <div class="main-panel">
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header" data-background-color="purple">
+                                <h4 class="title">Espace Administration des articles </h4>
+                                <p class="category">Validation article</p>
+                            </div>
+                            <div class="card-content table-responsive">
+
+                                {% for m in m %}
+                                  <label>Titre: </label>  {{ m.titre }}<br>
+                                    <label>Sujet: </label> {{ m.sujet }}<br>
+                                    <label>Date publication: </label>  {{ m.datepublication | date }}<br>
+                                    <img src='{{ asset('articles/' ~ m.image) }}' alt='image' class='img-rounded'>
+                                    <label>Corps: </label> {{ m.body|raw}}<br>
+                                    <a href="{{ path('AccepterArticle',{'idarticle':m.idarticle}) }}">Accepter cet article</a><br>
+                                    <a href="{{ path('RefuserArticle',{'idarticle':m.idarticle}) }}">Refuser cet article</a>
+                                {% endfor %}
+
+                            </div>
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+    </body></html>
+{% endblock %}
+

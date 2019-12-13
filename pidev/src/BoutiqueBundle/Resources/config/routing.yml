@@ -1,0 +1,122 @@
+boutique_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Default:index }
+AfficheP_Admin:
+    path:     /AfficheP_Admin
+    defaults: { _controller: BoutiqueBundle:Produit:AfficheP_Admin}
+Supprimer_admin:
+    path:     /Supprimer_admin/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:Supprimer_admin}
+fournisseur:
+    path:     /fournisseur
+    defaults: { _controller: BoutiqueBundle:Produit:fournisseur}
+ValueFournisseur:
+    path:     /ValueFournisseur/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:ValueFournisseur}
+desaprouverFournisseur:
+    path:     /desaprouverFournisseur/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:desaprouverFournisseur}
+
+#boutique_produit:
+#    path:     /afficher_produit
+#    defaults: { _controller: BoutiqueBundle:Default:produit }
+boutique_afficher_produit:
+    path:     /afficher_produit
+    defaults: { _controller: BoutiqueBundle:Produit:Affichage}
+
+boutique_listproduit:
+    path:     /produit_leftsidebar
+    defaults: { _controller: BoutiqueBundle:Default:listProduit}
+
+boutique_singleProduct:
+    path:     /produit_single/{id}
+    defaults: { _controller: BoutiqueBundle:Default:singleProduct}
+boutique_categorie_produit:
+    path:     /produit_categorie
+    defaults: { _controller: BoutiqueBundle:Default:categorie_product}
+categorie:
+    path:     /categorie/{categorie}
+    defaults: { _controller: BoutiqueBundle:Default:categorie}
+
+boutique_gestion_boutique:
+    path:     /gestion_boutique
+    defaults: { _controller: BoutiqueBundle:Default:gestion_boutique}
+boutique_ajouter_produit:
+    path:     /ajouter_produit
+    defaults: { _controller: BoutiqueBundle:Produit:Ajouter_produit}
+boutique_supprimer_produit:
+    path:     /supprimer_produit/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:Supprimer}
+boutique_modifier_produit:
+    path:     /modifier_produit/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:modifier}
+
+getAllSession:
+    path:     /getSession
+    defaults: { _controller: BoutiqueBundle:Produit:getallProduitFromSession }
+
+
+setSession:
+    path:     /setSession/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:setProduitToSession }
+
+AjoutCommande:
+    path:     /AjoutCommande
+    defaults: { _controller: BoutiqueBundle:Produit:AjoutCommande }
+boutique_cart_produit:
+    path:     /cart_produit
+    defaults: { _controller: BoutiqueBundle:Produit:AddCart}
+boutique_voir_commande:
+    path:     /voir_commande
+    defaults: { _controller: BoutiqueBundle:Produit:voir_commande}
+boutique_panier:
+    path:     /
+    defaults: { _controller: BoutiqueBundle:Produit:AddPanier}
+chartLine:
+    path:     /chartLine
+    defaults: { _controller: BoutiqueBundle:Graphe:chartLine}
+piechart:
+    path:     /piechart
+    defaults: { _controller: BoutiqueBundle:Graphe:PieChart}
+histogramme:
+    path:     /histogramme
+    defaults: { _controller: BoutiqueBundle:Graphe:histogramme}
+pdf:
+    path:     /pdf
+    defaults: { _controller: BoutiqueBundle:Produit:pdf}
+getProductById:
+    path:     /getProduct/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:getProductById}
+delsession:
+    path:     /delsession/{id}{quantite}
+    defaults: { _controller: BoutiqueBundle:Produit:delsession}
+delprodsession:
+    path:     /delprodsession/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:deletefromcart}
+validercommande:
+    path:     /validercommande/{id}
+    defaults: { _controller: BoutiqueBundle:Produit:validercommande}
+
+_ajaxp:
+        path: /recherchep/search
+        defaults: { _controller: BoutiqueBundle:Produit:recherchepAjax}
+
+mobileAllProduct:
+        path: /mobileAllProduct
+        defaults: { _controller: BoutiqueBundle:Default:AllproductMobile}
+
+mobileCommande:
+        path: /mobileCommande
+        defaults: { _controller: BoutiqueBundle:Default:mobileCommande}
+
+updatestockMobile:
+        path: /updatestockMobile/{id}
+        defaults: { _controller: BoutiqueBundle:Default:updatestockMobile}
+
+quickviewMobile:
+        path: /quickviewMobile/{id}
+        defaults: { _controller: BoutiqueBundle:Default:quickviewMobile}
+
+mobilesetrating:
+        path: /mobilesetrating
+        defaults: { _controller: BoutiqueBundle:Default:mobilesetrating}

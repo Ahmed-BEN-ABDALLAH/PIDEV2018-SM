@@ -1,0 +1,19 @@
+.notification{
+    position: absolute;
+    z-index: 15;
+    cursor: pointer;
+    border-left: 6px solid #00aeef;
+    font-size: 12px;
+    line-height: 15px;
+    padding: 20px 5px 20px 11px;
+    letter-spacing: 1px;
+    border-radius: 0px 5px 5px 0px;
+    color: #fff;
+    background-color: #222931;
+    width: 200px;
+    height: auto;
+    left: -220px;
+    -webkit-box-shadow: 0px 0px 14px 0px rgba(50,50,50,0.75);
+    -moz-box-shadow: 0px 0px 14px 0px rgba(50,50,50,0.75);
+    box-shadow: 0px 0px 14px 0px rgba(50,50,50,0.75);
+}

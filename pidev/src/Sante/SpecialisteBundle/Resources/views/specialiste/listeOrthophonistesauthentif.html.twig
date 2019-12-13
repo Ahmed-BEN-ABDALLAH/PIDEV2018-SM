@@ -1,0 +1,47 @@
+{% extends 'template.html.twig' %}    {% block body %}
+
+        {% block deux_menu_principaux %}
+            {{ parent() }}
+        {% endblock  %}
+
+
+        {% block style %}
+            {{ parent() }}
+        {% endblock %}
+        {% block content %}
+            {% block menu_sante %}
+                <section class="pageTitleSection">
+                    <div class="container">
+                        <div class="pageTitleInfo">
+                            <h2>Santé</h2>
+                            <ol class="breadcrumb">
+                                <li><a href="index-2.html">Accueil</a></li>
+                                <li class="active">Orthophonistes</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+            {% endblock  %}
+Liste Orthophoniste
+            <fieldset>
+                flen Ben foulen
+                <p>
+
+                    .
+                    .
+                </p>
+            </fieldset>
+            <fieldset>
+                flen 2  Ben foulen
+                <p>
+
+                    .
+                    .
+                </p>
+            </fieldset>
+
+        {% endblock %}
+        {% block script1 %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

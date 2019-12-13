@@ -1,0 +1,4 @@
+services:
+#    jardin_denfant_evenement.example:
+#        class: JardinDenfant\EvenementBundle\Example
+#        arguments: ["@service_id", "plain_value", "%parameter%"]

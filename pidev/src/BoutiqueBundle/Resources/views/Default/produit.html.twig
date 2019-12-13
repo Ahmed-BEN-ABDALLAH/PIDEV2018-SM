@@ -1,0 +1,163 @@
+{% extends 'template.html.twig' %}
+    {% block body %}
+
+        {#{{ dump(r) }}#}
+        {#{{ dump(rating) }}#}
+        {#{{ dump(produit) }}#}
+        {#{{ dump(firas) }}#}
+        <section class="mainContent full-width clearfix productSection">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-md-9 col-sm-7 col-xs-12">
+                        <div class="row">
+                            <div class="r">
+                            {% for i in produit %}
+
+                                <div class="filter {{ i.prix }}">
+                            <div class="col-md-4 col-xs-6 arbouch">
+                                <div class="box bg-color-4">
+                                    <div class="box-img border-color-4 text-center">
+                                        {#<a href="{{ path('boutique_singleProduct') }}">#}
+                                            <img src="{{ asset(i.image) }}" alt="image" class="img-responsive">
+
+                                        {#</a>#}
+                                        <a data-toggle="modal" href="{{ path('boutique_singleProduct',{'id':i.id}) }}" class="btn-block"><i class="fa fa-eye" aria-hidden="true"></i>Quick View</a>
+                                    </div>
+                                    <div class="box-info">
+                                        <h4>{{ i.nom }} </h4>
+                                {% for rate in rating %}
+                                    {% if i.id  ==  rate.idproduit %}
+                                        <h1>{{ rate.1|rating(5, "fa-1x")  }}</h1>
+                                    {% endif %}
+                                {% endfor %}
+
+                                        <div class="price">
+                                            <span class="prix">{{ i.prix }}dt</span>
+
+
+
+                                        </div>
+                                        <a onclick="addToCart('{{ i.id }}')" class="btn btn-primary "><i class="fa fa-shopping-basket " aria-hidden="true"></i>Ajouter au panier</a>
+                                    </div>
+                                </div>
+                            </div>
+                                </div>
+
+                            {% endfor %}
+                            </div>
+
+
+                        </div>
+                        <div class="pagerArea text-center">
+                            {{ knp_pagination_render(produit) }}
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-3 col-sm-5 col-xs-12">
+                        <aside>
+                            <div class="panel panel-default courseSidebar">
+                                <div class="panel-heading bg-color-1 border-color-1">
+                                    <h3 class="panel-title">Search</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="input-group">
+                                        <input type="text" placeholder="Click to Search" id="recherche" class="form-control search-input">
+                                        <span class="input-group-addon" id="basic-addon2"><input class="btn btn-primary bg-color-1" type="submit" value="Search"></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel panel-default courseSidebar">
+                                <div class="panel-heading bg-color-2 border-color-2">
+                                    <h3 class="panel-title">Filter By</h3>
+                                </div>
+                                <div class="panel-body">
+
+
+                                    <div class="priceRange">
+                                        <div class="price-slider-inner">
+                      <span class="amount-wrapper">
+                        Price:
+                        <input type="text" id="price-amount-1" readonly>
+                        <strong>-</strong>
+                        <input type="text" id="price-amount-2" readonly>
+                      </span>
+                                            <div id="price-range"></div>
+                                        </div>
+                                        <input id="ass" class="btn btn-primary bg-color-2" type="submit" value="Filter">
+                                        <!-- <span class="priceLabel">Price: <strong>$12 - $30</strong></span> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    {% endblock %}
+
+{% block javascripts %}
+    <script src="{{asset('bootstrap-notify.min.js')}}"></script>
+    <script>
+        $(document).ready(function () {
+            $('#recherche').on('keyup', function () {
+                $search = $(this).val();
+                $.ajax({
+                    url: "{{ path('_ajaxp') }}",
+                    data: {'search': $search }
+                }).done(function (response) {
+                    $('.r').html(response)
+                }).catch(function (err) {
+
+                });
+            });
+        });
+        function addToCart(id) {
+            var notify = $.notify('<strong style="color: #ff0000">  Votre produit a été ajouté au panier</strong>', {
+                allow_dismiss: false,
+                showProgressbar: true,
+                delay:100,
+                type: 'info'
+            });
+            $.ajax({
+                url: "http://localhost/pidev/web/app_dev.php/boutique/setSession/"+id,
+                success: function(result){
+                    updatepanier()
+                }}
+            );
+        }
+
+
+
+        $('#ass').click(function() {
+            min=$("#price-amount-1").val().substring(1)
+            max=$("#price-amount-2").val().substring(1)
+            console.log(min)
+            console.log(max)
+            val1=parseInt(min)
+            val2=parseInt(max)
+            $(".filter").each(function() {
+                productprix=$(this).attr('class').substring(7);
+                console.log(productprix)
+
+                prix=parseInt(productprix)
+                if((val1<=prix )&& (prix <=val2)){
+                    $(this).show()
+                }else {
+                    $(this).hide()
+
+                }
+
+            })
+        });
+
+
+
+    </script>
+
+
+
+{% endblock %}

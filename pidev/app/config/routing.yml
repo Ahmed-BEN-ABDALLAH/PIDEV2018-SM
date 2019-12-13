@@ -1,0 +1,40 @@
+baby_sitters_baby_sitters:
+    resource: "@BabySittersBabySittersBundle/Resources/config/routing.yml"
+    prefix:   /baby_sitter
+
+
+enseignant_enseignant:
+    resource: "@EnseignantEnseignantBundle/Resources/config/routing.yml"
+    prefix:   /enseignant
+
+loisirs_loisirs:
+    resource: "@LoisirsLoisirsBundle/Resources/config/routing.yml"
+    prefix:   /loisir
+
+
+jardin_denfant_profil_jd:
+    resource: "@JardinDenfantProfilJDBundle/Resources/config/routing.yml"
+    prefix:   /jardin
+
+santearticle:
+    resource: "@SantearticleBundle/Resources/config/routing.yml"
+    prefix:   /sante
+
+sante_specialiste:
+    resource: "@SanteSpecialisteBundle/Resources/config/routing.yml"
+    prefix:   /sante
+
+user:
+    resource: "@UserBundle/Resources/config/routing.yml"
+    prefix:   /
+
+boutique:
+    resource: "@BoutiqueBundle/Resources/config/routing.yml"
+    prefix:   /boutique
+
+app:
+    resource: '@AppBundle/Resources/config/routing.yml'
+    prefix: /home
+
+fos_user_security:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,273 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    <style>
+
+        #map {
+            height: 400px;
+            width:100%;
+        }
+    </style>
+
+
+        <section class="mainContent full-width clearfix coursesSection">
+
+            <div class="container">
+                <div class="row">
+                    <table>
+                    <div class="col-md-9 col-sm-8 col-xs-12 pull-right">
+                        <div class="row"   id="div_info">
+                            {%   for i in jd %}
+                                <div class="col-md-4 col-sm-6 col-xs-12 block" id="affichage">
+                                    <div class="thumbnail thumbnailContent">
+                                        <a href="single-blog-left-sidebar.html">
+                                            <img src="{{ asset('uploads/images/' ~ i.image) }}"  style="width: 441px;height: 350px"
+                                            alt="image" class="img-responsive"
+                                            ></a>
+
+                                        <div class="caption border-color-1">
+                                            <h3><a href="{{ path('profil',{'numauth':i.numauth} )}}" class="color-1">{{ i.nomJD }}</a></h3>
+                                            <ul class="list-inline">
+                                                <li><i class="fa fa-user" aria-hidden="true"></i>{{ app.user.username }}</li>
+
+                                            </ul>
+                                            <p><strong style="color: yellowgreen">description </strong>{{ i.description }} </p>
+                                            <p><strong style="color: coral">numero d'authorisation</strong>{{ i.numauth }}</p>
+                                            <p> <strong style="color: deepskyblue">adresse du jardin</strong> {{ i.adresse }}</p>
+
+                                            <p style="color: red">
+                                                <strong>NOTE TOTALE </strong>   {{ i.rating }}
+                                            </p>
+
+                                            <ul class="list-inline btn-yellow">
+                                                <li>
+                                                    <a href="{{ path('voirDeatil',{'numauth':i.numauth} ) }}" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Donnez votre Avis  </a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            {%  endfor %}
+                        </div  >
+                        <div id="div_1" class="mes_divs">
+                            <input id="pac-input" class="controls" type="text"
+                                   placeholder="Entrer le nom du jardin "  size="60" width="600px">
+                            <div id="type-selector" class="controls">
+
+                                <input type="radio" name="type" id="changetype-establishment"  checked="checked">
+                                <label for="changetype-establishment">Establishments</label>
+
+
+                            </div>
+                            <div id="map"></div>
+
+
+                        </div>
+                    </div>
+                    </table>
+
+
+
+
+                    <div class="col-md-3 col-sm-4 col-xs-12 pull-left">
+                        <aside>
+                            <div class="panel panel-default courseSidebar">
+                                <div class="panel-heading bg-color-1 border-color-1">
+                                    <h3 class="panel-title">Search</h3>
+                                </div>
+                                <div class="panel-body" id="div_0">
+                                    <form method="post">
+                                        <div class="input-group">
+
+
+                                            <input type="text" class="form-control" placeholder="recherche"  name="adresse" id="adresse" style="width: 230px;">
+                                           <!-- <input type="text" class="form-control" placeholder="nom jardin"  name="nomjd" id="nomjd"    >-->
+                                            <br><br>
+                                                <div style="margin-right: 0px;">
+                                                <input class="btn btn-warning " type="submit" value="Chercher" id="buttonsubmit">
+                                                </div>
+                                        </div>
+                                    </form>
+                                </div>
+
+
+                            </div>
+
+                        </aside>
+
+                        <div class="dropGeneral roundOne border-color-2" id="critere" >
+                            <select name="monselect" id="guiest_id16" class="select-drop">
+                                <option value="0">adresse</option>
+                                <option value="1">nom jardin </option>
+
+                            </select>
+                        </div>
+                </div>
+
+
+
+                    </div>
+
+
+              <!---  <div id="div" name="div"></div>
+
+                <div class="pagerArea text-center">
+                    <ul class="pager">
+                        <li class="prev"><a href="#"><i class="fa fa-arrow-left" aria-hidden="true"></i>Prev</a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">...</a></li>
+                        <li><a href="#">15</a></li>
+                        <li class="next"><a href="#">Next<i class="fa fa-arrow-right" aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>-->
+
+
+            </div>
+
+        </section>
+
+
+
+
+
+
+
+
+{% block javascripts %}
+
+
+    <script>
+        $('.mes_divs').hide();
+        $('select[name="monselect"]').change(function(){
+            // Je créer l'id du div qui va être affiché
+            var id = "div_" + $(this).val();
+
+            // Je cache toutes les divs grâce à une classe qui va sélectionner le tout
+
+            // Et j'affiche seulement le Div que je souhaite
+            if((id==='div_0'))
+            {$('#div_1').hide();
+                $('#div_0').show();
+
+                $('#div_info').show();
+            }
+
+            if(id==='div_1')
+            {$('#div_1').show();
+                $('#div_0').hide();
+                $('#div_info').hide();
+
+            }
+
+
+
+        });
+
+    </script>
+
+    <script>
+        // This example requires the Places library. Include the libraries=places
+        // parameter when you first load the API. For example:
+        // <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&libraries=places">
+
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat:  36.8189700, lng: 10.1657900},
+                zoom: 13
+            });
+            var input = /** @type {!HTMLInputElement} */(
+                document.getElementById('pac-input'));
+
+            var types = document.getElementById('type-selector');
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            var infowindow = new google.maps.InfoWindow();
+            var marker = new google.maps.Marker({
+                map: map,
+                anchorPoint: new google.maps.Point(0, -29)
+            });
+
+            autocomplete.addListener('place_changed', function() {
+                infowindow.close();
+                marker.setVisible(false);
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    // User entered the name of a Place that was not suggested and
+                    // pressed the Enter key, or the Place Details request failed.
+                    window.alert("No details available for input: '" + place.name + "'");
+                    return;
+                }
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);  // Why 17? Because it looks good.
+                }
+                marker.setIcon(/** @type {google.maps.Icon} */({
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(35, 35)
+                }));
+                marker.setPosition(place.geometry.location);
+                marker.setVisible(true);
+
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                infowindow.open(map, marker);
+            });
+
+            // Sets a listener on a radio button to change the filter type on Places
+            // Autocomplete.
+            function setupClickListener(id, types) {
+                var radioButton = document.getElementById(id);
+                radioButton.addEventListener('click', function() {
+                    autocomplete.setTypes(types);
+                });
+            }
+
+            setupClickListener('changetype-all', []);
+            setupClickListener('changetype-address', ['address']);
+            setupClickListener('changetype-establishment', ['establishment']);
+            setupClickListener('changetype-geocode', ['geocode']);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA3JuT8uCTcMWf6sszx6aGD0nzHpPt3BmU&libraries=places&callback=initMap"
+            async defer></script>
+
+
+
+
+
+{% endblock %}
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

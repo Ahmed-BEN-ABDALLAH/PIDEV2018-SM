@@ -1,0 +1,101 @@
+{% include'::admin.html.twig' %}
+ {% block body %}
+     <html>
+     <head>
+         <title>Liste des Blagues</title>
+         <script src="{{ asset('plugins/bootstrap/js/bootstrap.min.js')}}"></script>
+         <link href="{{ asset('plugins/font-awesome/css/font-awesome.min.css') }} " rel="stylesheet">
+         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/rs-plugin/css/settings.css')}}" media="screen">
+         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/selectbox/select_option1.css')}}">
+         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/owl-carousel/owl.carousel.css')}}" media="screen">
+         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/isotope/jquery.fancybox.css')}} ">
+         <link rel="stylesheet" type="text/css" href="{{ asset('plugins/isotope/isotope.css')}}">
+         <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
+     </head>
+     <body>
+     <div class="main-panel">
+         {% for flashMessage in app.session.flashbag.get('success') %}
+
+             <div class="alert alert-success">
+                 {{ flashMessage }}
+             </div>
+         {% endfor %}
+         <div class="content">
+             <div class="container-fluid">
+                 <div class="row">
+                     <div class="col-md-12">
+                         <div class="card">
+                             <div class="card-header" data-background-color="purple">
+                                 <h4 class="title">Espace Administration des jardins d'enfants </h4>
+                                 <p class="category">Liste des jardins </p>
+                             </div>
+                             <div  class="card-content table-responsive">
+
+                                 <table class="table" id="affichage">
+                                     <thead class="text-primary">
+                                     <th>numero d'authorisation</th>
+                                     <th>nom du jardin </th>
+                                     <th>numero </th>
+                                     <th>image</th>
+                                     <th>description </th>
+                                     <th> valider</th>
+                                     </thead>
+                                     {% for i in jds %}
+                                         <tbody>
+                                         <tr>
+                                             <td>{{ i.numauth }}</td>
+                                             <td>{{ i.nomJD  }}</td>
+                                             <td> {{ i.num }}</td>
+                                             <td >
+                                                 <div class="col-md-3 col-sm-6 col-xs-12 isotopeSelector charity" style="width: 100px">
+                                                     <article class="">
+                                                         <figure>
+                                                             <img src="{{ asset('uploads/images/' ~ i.image) }}" alt='image' class='img-rounded'>
+                                                                 <div class="overlay-background">
+                                                                     <div class="inner"></div>
+                                                             </div>
+                                                             <div class="overlay">
+                                                                 <a class="fancybox-pop" rel="portfolio-1" href="{{ asset('uploads/images/' ~ i.image) }}">
+                                                                     <i class="fa fa-search-plus" aria-hidden="true"></i>
+                                                                 </a>
+                                                             </div>
+                                                         </figure>
+                                                     </article>
+                                                 </div>
+                                             </td>
+                                             <td>{{ i.description}}....</td>
+                                             <td><a href="{{ path('valideradmin',{'numauth':i.numauth}) }}"> valider</a></td>
+
+
+                                            </tr>
+
+
+                                         </tbody>
+                                     {% endfor %}
+                                 </table>
+                                 <div >
+
+                                 </div>
+                             </div>
+
+                         </div>
+
+                     </div>
+                 </div>
+             </div>
+
+
+
+         </div>
+         <script src="{{ asset ('jquery-3.2.1.min.js') }}"></script>
+     </div>
+     </body>
+     </html>
+
+ {% endblock %}
+<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+<!--[if lt IE 9]>
+    <script src="{{ asset('https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js') }}"></script>
+    <script src="{{ asset('https://oss.maxcdn.com/respond/1.4.2/respond.min.js') }}"></script>

@@ -1,0 +1,77 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        {% block menu_sante %}
+            <section class="pageTitleSection">
+                <div class="container">
+                    <div class="pageTitleInfo">
+                        <h2>Santé</h2>
+                        <ol class="breadcrumb">
+                            <li><a href="index-2.html">Accueil</a></li>
+                            <li class="active">Mon espace</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        {% endblock  %}
+        <br>
+        <br>
+        <div class="container"  style="margin:auto ">
+
+            <div class="row">
+                <div class="col-xs-12" >
+                    <div class="tabCommon">
+
+                        <div class="sectionTitle text-center" style="font-size: small">
+
+                            <h2>
+
+                                <span class="shape shape-left bg-color-4"></span>
+                                <span> Mon article
+                                               </span>
+                                <span class="shape shape-right bg-color-4"></span>
+                            </h2>
+                        </div>
+                        <div class="col-xs-12 block">
+                            {% for m in m %}
+                                <div class="thumbnail thumbnailContent">
+                                    <img class="media-object" src="{{ asset('articles/' ~ m.image) }}" alt="Image">
+                                    <span class="sticker-round bg-color-1">{{ m.datepublication|date("d")}}<br>{{ m.datepublication|date("M-Y")}}</span>
+                                    <div class="caption border-color-1 singleBlog">
+                                        <h3 class="color-1">  {{ m.titre }}</h3>
+                                        <ul class="list-inline blogInfo">
+                                            <li><i class="fa fa-user" aria-hidden="true"></i>{{ m.nblike }} Likers</li>
+                                            <li><i class="fa fa-calendar-o" aria-hidden="true"></i>{{ m.sujet }}</li><br>
+                                            <li>{{ m.etat }} </li>
+                                        </ul>
+                                        <p>
+                                            {{ m.body|raw}}
+                                        </p>
+                                        <ul class="nav nav-tabs">
+
+                                            <li class="active"><a href="{{ path('modifierarricle',{'idarticle':m.idarticle,'id':app.user.id}) }}">Modifier cet article</a></li>
+                                            <li class="active"><a href="{{ path('supprimerarticle',{'idarticle':m.idarticle,'id':app.user.id}) }}">Suprimer cet article</a></li>
+                                        </ul>
+
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+
+    {% endblock %}
+    {% block script1 %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+
+
+
+

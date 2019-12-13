@@ -1,0 +1,79 @@
+{% extends 'template.html.twig' %}
+    {% block body %}
+
+
+        <section class="mainContent full-width clearfix">
+            <div class="container">
+                <div class="row">
+
+
+                    <div class="col-md-6 col-sm-7 col-xs-12">
+                        <div class="product-gallery">
+                            <div class="product-gallery-content">
+                                <ul class="product-gallery-preview">
+                                    <li id="preview01" class="current">
+                                        <img src="{{ asset(produit.image) }}" alt="Product" class="img-responsive">
+                                    </li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-sm-5 col-xs-12">
+                        <div class="product-info">
+                            <h1 class="product-title">{{ produit.nom }}</h1>
+                            <div class="price">
+                                <span>{{ produit.prix }}dt</span>
+
+                            </div>
+                            {{ form_start(f) }}
+                            <div class="row">{{ form_widget(f.rating ) }}
+
+                                {{ form_widget(f.valider) }}
+                            </div>
+                            {{ form_end(f) }}0
+                            <br>
+                            <h3 class="product-title">Description :</h3>
+                            <p>{{ produit.description }}</p>
+
+
+
+                            <div class="product-meta">
+                                <div class="product-category">
+                                    <h3 class="product-title">Category:</h3>{{ produit.categorie }}
+                                </div>
+                            </div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+
+
+
+    {% endblock %}
+
+{% block javascripts %}
+    <script>
+        function addToCart(id) {
+            $.ajax({
+                url: "http://localhost/pidev/web/app_dev.php/boutique/setSession/"+id,
+                success: function(result){
+                    var array=result.data;
+                    for (i = 0; i < array.length; i++) {
+                        console.log(array[i]);
+                    }
+                }}
+            );
+        }
+    </script>
+
+{% endblock %}

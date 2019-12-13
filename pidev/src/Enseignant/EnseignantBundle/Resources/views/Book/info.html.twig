@@ -1,0 +1,43 @@
+{% extends 'template.html.twig' %}
+
+    {% block body %}
+        <section class="mainContent full-width clearfix coursesSection">
+        <div class="container">
+
+
+            <ul class="pager">
+                <li class="prev"><a href="{{ path('Liste11') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i>Prev</a></li></ul>
+
+            <div class="col-md-3 col-sm-6 col-xs-12 block">
+            <div class="thumbnail thumbnailContent">
+            <a href="course-single-left-sidebar.html"><img src="{{ asset('images/') }}{{ m.nomimage }}" alt="image" class="img-responsive"></a>
+            <div class="caption border-color-1">
+            <h3><a href="course-single-left-sidebar.html" class="color-1"><button type="button" class="btn btn-sm btn-outline-primary">NOM Auteur : </button><p></p>{{m.nomauteur }}</a></h3>
+            <h3><a href="course-single-left-sidebar.html" class="color-1"><button type="button" class="btn btn-sm btn-outline-primary">Description : </button><p></p>{{ m.description }}</a></h3>
+            <h3><a href="course-single-left-sidebar.html" class="color-1"><button type="button" class="btn btn-sm btn-outline-primary">Prix du livre : </button><p></p>{{ m.prix }}</a></h3>
+
+
+            {{ form_start(f) }}
+<div class="row">{{ form_widget(f.rating ) }}
+
+    {{ form_widget(f.valider) }}
+</div>
+{{ form_end(f) }}
+                <ul class="list-inline btn-yellow">
+                    <li><a href="course-single-left-sidebar.html" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> More</a></li>
+                </ul>
+            </div>
+            </div>
+            </div>
+
+        </div>
+
+
+            </div>
+        </section>
+
+
+
+    {% endblock %}
+
+

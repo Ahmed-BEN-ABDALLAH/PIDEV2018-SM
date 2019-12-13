@@ -1,0 +1,54 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    <div class="media courseList">
+        {% for i in m %}
+        <a class="media-left" href="single-blog-left-sidebar.html">
+            <img  class="media-object" src="{{ asset('uploads/images/' ~ i.image) }}" alt="Image">
+
+        </a>
+
+        <div class="media-body">
+            <h3 class="media-heading"><a href="single-blog-left-sidebar.html" class="color-2">{{ i.nomJD }}</a></h3>
+            <ul class="list-inline">
+                <li><i class="fa fa-user" aria-hidden="true"></i>{{ app.user.username }}</li>
+
+            </ul>
+            <p>    numero authorisation : {{ i.numauth }}</p>
+            <p>adresse : {{ i.adresse }}
+        </br>
+            num :{{ i.num  }} </br>
+
+
+            </p>
+            <p>{{ i.description }}</p>
+            <ul class="list-inline btn-green btnPart">
+                <li><a href="{{ path('map',{'numauth':i.numauth} )}}" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Voir sur la carte</a></li>
+            </ul>
+
+            <a href="{{ path('modifier_p_j_d',{'numauth':i.numauth} )}}"> <button type="button" class="btn btn-xl btn-success not-rounded">modifier</button></a>
+            <a  href="{{ path('supprimer_p_j_d',{'numauth':i.numauth} )}}"> <button type="button" class="btn btn-xl btn-primary ">supprimer</button></a>
+
+
+        </div>
+        {% endfor %}
+    </div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

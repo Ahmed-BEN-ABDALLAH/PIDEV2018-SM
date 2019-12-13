@@ -1,0 +1,70 @@
+{% extends 'template.html.twig' %}    {% block body %}
+
+
+    {% block style %}
+        {{ parent() }}
+    {% endblock %}
+    {% block content %}
+        {% block menu_sante %}
+
+            <section class="pageTitleSection">
+                <div class="container">
+                    <div class="pageTitleInfo">
+
+                        <ol class="breadcrumb">
+                            <li><a href="index-2.html">Accueil</a></li>
+                            <li class="active">Profil</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        {% endblock  %}
+<ul class="pager">
+    <li class="prev"><a href="{{ path('Liste11') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i>Prev</a></li></ul>
+<div class="sectionTitle text-center">
+    <h2>
+        <span class="shape shape-left bg-color-4"></span>
+        <span>LA MOYENNE DE RATING </span>
+        <span class="shape shape-right bg-color-4"></span>
+    </h2>
+</div>
+{% for c in nbs  %}
+
+
+<div class="container"  style="margin:auto ">
+
+    <div class="row">
+        <div class="col-xs-12" >
+            <div class="tabCommon">
+                <ul class="nav nav-tabs">
+
+                    <li class="active"><a data-toggle="tab" >{{ c|rating }}</a></li>
+                </ul>
+                <div class="tab-content" style="width: 1200px; margin-right: 10px">
+                    <div id="leftHome" class="tab-pane fade in active" style="margin-right: 10px">
+                        <div class="media">
+                            <div class="container" >
+                                <div class="sectionTitle text-center" style="font-size: small">
+{% endfor %}
+<ul class="list-inline socailLink">
+    <li><a href="#" class="bg-color-1"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+    <li><a href="#" class="bg-color-2"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+    <li><a href="#" class="bg-color-3"><i class="fa fa-google-plus" aria-hidden="true"></i></a></li>
+    <li><a href="#" class="bg-color-4"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+    <li><a href="#" class="bg-color-5"><i class="fa fa-vimeo" aria-hidden="true"></i></a></li>
+</ul>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+</div>
+</div>
+<br>
+        </div></div>
+{% endblock %}
+    {% block script1 %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

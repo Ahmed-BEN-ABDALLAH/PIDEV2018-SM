@@ -1,0 +1,55 @@
+santearticle_homepage:
+    path:     /
+    defaults: { _controller: SantearticleBundle:Default:index }
+
+listerticle:
+    path:     /listerticle
+    defaults: { _controller: SantearticleBundle:rticle:listerticle }
+
+likerrticleNULL:
+    path:     /likernull/{idarticle}/{id}
+    defaults: { _controller: SantearticleBundle:rticle:LikeArticleNULL }
+likerrticle:
+    path:     /liker/{idarticle}/{id}
+    defaults: { _controller: SantearticleBundle:rticle:LikeArticle }
+unlikerrticle:
+    path:     /unliker/{idarticle}/{id}
+    defaults: { _controller: SantearticleBundle:rticle:unLikeArticle }
+
+ajouterArticle:
+    path:     /ajouterarticle/{id}
+    defaults: { _controller: SantearticleBundle:rticle:ajouterarticle }
+DetailArticle:
+    path:     /DetailArticle/{idarticle}
+    defaults: { _controller: SantearticleBundle:rticle:DetailArticle }
+
+DetailArticlePersonnel:
+    path:     /DetailArticlePersonnel/{idarticle}
+    defaults: { _controller: SantearticleBundle:rticle:DetailArticlePersonnel }
+
+listerticlepersonnel:
+    path:     /listerMESarticle/{id}
+    defaults: { _controller: SantearticleBundle:rticle:listerticlePersonnel }
+
+modifierarricle:
+    path:     /ModifierArticle/{idarticle}/{id}
+    defaults: { _controller: SantearticleBundle:rticle:modifierarticle }
+
+supprimerarticle:
+    path:     /SupprimerArticle/{idarticle}/{id}
+    defaults: { _controller: SantearticleBundle:rticle:supprimerarticle}
+
+listearticleavalider:
+    path:     /listevalidationarticle
+    defaults: { _controller: SantearticleBundle:rticle:listevaliderarticlearticle}
+Detailarticleavalider:
+    path:     /Detailvalidationarticle/{idarticle}
+    defaults: { _controller: SantearticleBundle:rticle:Detailvaliderarticle}
+
+AccepterArticle:
+    path:     /Accepterarticle/{idarticle}
+    defaults: { _controller: SantearticleBundle:rticle:Accpeterarticle}
+
+RefuserArticle:
+    path:     /Refuserarticle/{idarticle}
+    defaults: { _controller: SantearticleBundle:rticle:Refuserarticle}

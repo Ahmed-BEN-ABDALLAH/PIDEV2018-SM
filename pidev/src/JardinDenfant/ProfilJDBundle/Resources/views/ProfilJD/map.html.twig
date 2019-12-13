@@ -1,0 +1,42 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+    <link rel="script" href="{{ asset('http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js') }}">
+    <link rel="script" href="{{ asset('gmaps/gmaps.js') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('examples.css') }}" />
+    <input id="lat"  type="hidden" value={{ lat }}>
+    <input id="lng" type="hidden" value={{ lng }}>
+
+    <div class="row">
+        <div class="span11">
+            <div id="map"></div>
+            <script >
+                var map;
+                var markers = [];
+                var latt = document.getElementById('lat').value ;
+                var lngg= document.getElementById('lng').value;
+
+                var marker;
+                function initMap() {
+                    var lat_lng = {lat: 35.08672, lng: 10};
+                    var mardker = {lat: parseFloat(latt), lng: parseFloat(lngg)};
+                    map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 6,
+                        center: lat_lng,
+                        mapTypeId: google.maps.MapTypeId.TERRAIN
+                    });
+
+                    marker = new google.maps.Marker({
+                        position: mardker,
+                        map: map
+                    });
+                    markers.push(marker);
+
+                }
+            </script>
+            <script async defer src="{{ asset('https://maps.googleapis.com/maps/api/js?key=AIzaSyAuFusBAC3vYNl0ye8bXOk0nGhGUo109qE&callback=initMap') }}">
+            </script>
+        </div>
+    </div>
+
+{% endblock %}

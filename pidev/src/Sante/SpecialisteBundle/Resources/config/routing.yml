@@ -1,0 +1,175 @@
+sante_specialiste_homepage:
+    path:     /
+    defaults: { _controller: SanteSpecialisteBundle:Default:index }
+
+
+ListePediatresmobile:
+    path:     /listepediatresmobile
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:listePediatresMobile }
+
+ajoutquestionmobile:
+    path:     /ajoutquestion
+    defaults: { _controller: SanteSpecialisteBundle:question:ajoutMobile }
+
+ajoutrendezVousmobile:
+    path:     /ajoutrendezVousMobile
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:ajoutRendezVous }
+
+confirmerRendezVousmobile:
+    path:     /listeConfirmatinMedecinMobile/{cinmedecin}
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:listeConfirmatinMedecinMobile }
+confirmerRendezVousmedmobile:
+    path:     /confirmerRendezVousmedmobile/{id}
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:ConfirmerRendezVousmobilemed }
+ajoutreponsemobile:
+    path:     /ajoutreponse
+    defaults: { _controller: SanteSpecialisteBundle:reponse:ajoutMobile }
+
+Findreponsemobile:
+    path:     /findrep/{idquestion}
+    defaults: { _controller: SanteSpecialisteBundle:reponse:FindrepquesClientMobile }
+
+listeEnfantconnecte:
+    path:     /listeEnfantconnecte/{id}
+    defaults: { _controller: SanteSpecialisteBundle:enfant:listeEnfantparentMobile}
+
+listerendezvousmedecinajout:
+    path:     /listerendezvousmedecinajout/{daterendez}/{cinmedecin}
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:listerendezvousmedecinajoutMobile}
+
+listereponsemedecin:
+    path:     /listereponsemedecin/{idmedecin}
+    defaults: { _controller: SanteSpecialisteBundle:reponse:listeReponsesMedecinMobile}
+
+listerendezvousheuremedecinajout:
+    path:     /listerendezvousheuremedecinajout/{daterendez}/{cinmedecin}/{heure}
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:listerendezvousmedecinminuteajoutMobile}
+
+listeverif1:
+    path:     /listeverif1/{idparent}/{nom}/{cinmedecin}
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:listeVerif1}
+listerendezvousClient:
+    path:     /listerendezvousclient/{idparent}
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:listerendezvousClientMobile}
+
+SMS:
+    path:     /envoyerSmS
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:EnvoyerSmsMobile}
+delrendezVous:
+    path:     /delrendezVous/{idrendezvous}
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:Deleteredezvousmobile}
+
+delquestion:
+    path:     /delquestion/{id}
+    defaults: { _controller: SanteSpecialisteBundle:question:Deletequestionmobile}
+nbquestion:
+    path:     /nbquestion/{idparent}
+    defaults: { _controller: SanteSpecialisteBundle:question:nbquestionmobile}
+nbreponse:
+    path:     /nbreponse/{idparent}
+    defaults: { _controller: SanteSpecialisteBundle:reponse:nbreponsemobile}
+
+questionClient:
+    path:     /questionclient/{idparent}
+    defaults: { _controller: SanteSpecialisteBundle:question:listeQuestionsClientMobile}
+questionmedecin:
+    path:     /questionmedecin/{idmedecin}
+    defaults: { _controller: SanteSpecialisteBundle:question:listeQuestionsMedecinMobile}
+ConsultationClient:
+    path:     /Consultationclient/{idenfant}
+    defaults: { _controller: SanteSpecialisteBundle:consultation:listeConsultationClientMobile}
+
+TraitementClient:
+    path:     /Traitementclient/{idconsultation}
+    defaults: { _controller: SanteSpecialisteBundle:traitement:listeTraitementClientMobile}
+
+updatequestionClient:
+    path:     /updatequestionclient/{id}/{objet}/{question}
+    defaults: { _controller: SanteSpecialisteBundle:question:Updatequestionmobile}
+
+updatereponse:
+    path:     /updatereponse/{id}/{reponseText}
+    defaults: { _controller: SanteSpecialisteBundle:reponse:Updatereponsemobile}
+repondrequestionClient:
+    path:     /repondrequestionclient/{id}
+    defaults: { _controller: SanteSpecialisteBundle:question:repondrequestionmobile}
+findmedbycin:
+    path:     /findmedecincin/{cin}
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:findmedbycin}
+
+findmedbyId:
+    path:     /findmedecinId/{id}
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:findmedbyId}
+listeminuteaffichegeajout:
+    path:     /listeminuteaffichegeajout/{daterendez}/{cinmedecin}/{heure}/{minute}
+    defaults: { _controller: SanteSpecialisteBundle:rendezvous:listeaffichagemenuMobile}
+
+ajouter_info:
+    path:     /ajouterInfo
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:ajouterInfo }
+supprimercompte:
+    path:     /supprimercompte
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:supprimercompte }
+accepterspecialiste:
+    path:     /accepterspecialiste/{id}
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:accepterspecialiste }
+refuserspecialiste:
+    path:     /refuserspecialiste/{id}
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:refuserspecialiste }
+verifprofil:
+    path:     /verifprofil
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:verifprofil }
+modifier_info:
+    path:     /modifierInfo/{id}
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:modifierInfo }
+detailMedecin:
+    path:     /detailMedecin/{cin}
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:DetailMedecin }
+modifierHoraire:
+    path:     /modifierHoraire/{id}
+    defaults: { _controller: SanteSpecialisteBundle:horaireTravail:modifierHoraire}
+ajouterHoraire1:
+    path:     /ajouterhoraire1/{id}
+    defaults: { _controller: SanteSpecialisteBundle:horaireTravail:ajouterHoraire1}
+ajouterHoraire2:
+    path:     /ajouterhoraire2/{id}
+    defaults: { _controller: SanteSpecialisteBundle:horaireTravail:ajouterHoraire2}
+ajouterHoraire3:
+    path:     /ajouterhoraire3/{id}
+    defaults: { _controller: SanteSpecialisteBundle:horaireTravail:ajouterHoraire3}
+ajouterHoraire4:
+    path:     /ajouterhoraire4/{id}
+    defaults: { _controller: SanteSpecialisteBundle:horaireTravail:ajouterHoraire4}
+ajouterHoraire5:
+    path:     /ajouterhoraire5/{id}
+    defaults: { _controller: SanteSpecialisteBundle:horaireTravail:ajouterHoraire5}
+ajouterHoraire6:
+    path:     /ajouterhoraire6/{id}
+    defaults: { _controller: SanteSpecialisteBundle:horaireTravail:ajouterHoraire6}
+ListePediatres:
+    path:     /pediatres
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:listePediatres }
+ListeOthonistes:
+    path:     /orthophonistes
+    defaults: { _controller: SanteSpecialisteBundle:MedecinSpecialiste:listeOrthophonistes }
+layoutsanteauthentif:
+    path:     /layoutsanteauthentif
+    defaults: { _controller: SanteSpecialisteBundle:specialiste:layoutsanteauthentif }
+forum:
+    path:     /forum
+    defaults: { _controller: SanteSpecialisteBundle:specialiste:AfficherForum }
+findquestmobile:
+    path:     /findquestbyId/{id}
+    defaults: { _controller: SanteSpecialisteBundle:question:findquestbyId }
+
+ajoutmobile:
+    path:     ajoutmobile/
+    defaults: { _controller: SanteSpecialisteBundle:question:ajoutmobile }
+
+uploadImageMobile:
+    path:     upload/
+    defaults: { _controller: SanteSpecialisteBundle:question:uploadImage}
+
+affichemobile:
+    path:     /affichemobile
+    defaults: { _controller: SanteSpecialisteBundle:question:affichemobile }

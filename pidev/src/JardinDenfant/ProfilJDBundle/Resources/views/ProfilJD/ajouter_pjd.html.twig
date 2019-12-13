@@ -1,0 +1,39 @@
+{% extends "template.html.twig" %}
+
+
+
+{% block body %}
+
+    <h1> ajout </h1>
+    <form method="POST" action=""  >
+        {{ form_start(form)  }}
+        <table>
+            <tr>
+                <td>numero authorisation</td>
+                <td> {{ form_widget(form.num_Auth) }}</td>
+            </tr>
+            <tr>
+                <td>nom</td>
+                <td> {{ form_widget(form.nomJD) }}</td>
+            </tr>
+
+
+            <tr>
+                <td>adresse</td>
+                <td> {{ form_widget(form.adresse) }}</td>
+            </tr>
+
+            <tr>
+                <td>num</td>
+                <td> {{ form_widget(form.num) }}</td>
+            </tr>
+            <tr>
+                <td>description </td>
+                <td> {{ form_widget(form.description) }}</td>
+            </tr>
+
+            <tr> <td> {{ form_widget(form.ok)  }}</td></tr>
+        </table>
+        {{ form_end(form)  }}
+    </form>
+{% endblock %}

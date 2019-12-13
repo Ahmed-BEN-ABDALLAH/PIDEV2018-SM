@@ -1,0 +1,81 @@
+{% extends 'template.html.twig' %}
+
+{% block body %}
+    <br>
+    <br>
+    <div class="container"  style="margin:auto ">
+
+
+    {% if  ev == null %}<br> <br><br> <br>  <h5> vous n'avez pas d'evenment </h5><br> <br><br> <br><br> <br><br> <br>
+    {% endif  %}
+    {% for i in ev %}
+        <div class="media courseList">
+            <a class="media-left" href="single-blog-left-sidebar.html">
+
+                <img class="media-object" src="{{ asset('images/' ~ i.image) }}"   alt="Image"  >
+                <span class="sticker-round bg-color-1">{{ i.start |date('y-m-d')}}</span>
+            </a>
+            <div class="media-body">
+                <h3 class="media-heading"><a href="single-blog-left-sidebar.html" class="color-1">{{ i.nonE }}</a></h3>
+                <ul class="list-inline">
+                    <li><i class="fa fa-user" aria-hidden="true"></i>{{ app.user.username }}</li>
+
+                </ul>
+
+
+
+                <p><strong style="color: yellowgreen"> A propos l'evenement </strong>{{ i.apropos }} </p>
+                <p><strong style="color: coral"> heure d'evenement</strong>{{ i.heure }}</p>
+                <p> <strong style="color: deepskyblue"> duree:</strong> {{ i.duree }}</p>
+                <p><strong style="color: coral"> heure d'evenement</strong>{{ i.heure }}</p>
+                <p> <strong style="color: #bfff57">  adresse:</strong> {{ i. adresse }}</p>
+                <p> <strong style="color: #ff5dcd">   nbre de place max:</strong> {{ i.nbrPlaceMax }}</p>
+
+
+                <a href="{{ path('modif_e',{'ide':i.ide} )}}"> <button type="button" class="btn btn-xl btn-success not-rounded">modifier</button></a>
+                <a  href="{{ path('supprime_e',{'ide':i.ide} )}}"> <button type="button" class="btn btn-xl btn-primary ">supprimer</button></a>
+
+            </div>
+
+
+
+
+        </div>
+
+
+        <!-- pop up
+
+        <div class="modal fade customModal" id="loginModal" tabindex="-1" role="dialog">
+
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="panel panel-default formPanel">
+                <div class="panel-heading bg-color-1 border-color-1">
+                    <h3 class="panel-title"></h3>
+                </div>
+
+
+
+
+
+            <input type="hidden" name="_target_path" value="" />
+
+        </form>
+
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+-->
+
+
+</div>
+
+    {% endfor %}
+
+
+    </div>
+
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    {% for i in jds %}
+    <div class="media courseList">
+
+            <a class="media-left" href="single-blog-left-sidebar.html">
+                <img  class="media-object" src="{{ asset('uploads/images/' ~ i.image) }}" alt="Image">
+
+            </a>
+
+            <div class="media-body">
+                <h3 class="media-heading"><a href="single-blog-left-sidebar.html" class="color-2">{{ i.nomJD }}</a></h3>
+                <ul class="list-inline">
+                    <li><i class="fa fa-user" aria-hidden="true"></i>{{ app.user.username }}</li>
+
+                </ul>
+                <p>    numero authorisation : {{ i.numauth }}</p>
+                <p>adresse : {{ i.adresse }}
+                    </br>
+                    num :{{ i.num  }} </br>
+
+
+                </p>
+                <p>{{ i.description }}</p>
+
+
+                <a href="{{ path('valideradmin',{'numauth':i.numauth}) }}"> <button type="button" class="btn btn-xl btn-success not-rounded">valider</button></a>
+
+            </div>
+
+    </div>
+
+    {% endfor %}
+
+    {# display navigation #}
+    <div class="pagerArea txt-center" style="text-align: center">
+        {{ knp_pagination_render(jds) }}
+    </div>
+
+{% endblock %}

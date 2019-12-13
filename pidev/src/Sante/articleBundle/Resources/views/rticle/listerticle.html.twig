@@ -1,0 +1,107 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        {% block menu_sante %}
+            <section class="pageTitleSection">
+                <div class="container">
+                    <div class="pageTitleInfo">
+                        <h2>Santé</h2>
+                        <ol class="breadcrumb">
+                            <li><a >Accueil</a></li>
+                            <li class="active">Articles</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        {% endblock  %}
+        <br>
+        <br>
+        <div class="container"  style="margin:auto ">
+
+            <div class="row">
+                <div class="col-xs-12" >
+                    <div class="tabCommon">
+
+                        <div class="sectionTitle text-center" style="font-size: small">
+
+                            <h2>
+
+                                <span class="shape shape-left bg-color-4"></span>
+                                <span> Articles
+                                               </span>
+                                <span class="shape shape-right bg-color-4"></span>
+                            </h2>
+                        </div>
+                        <section class="mainContent full-width clearfix">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-md-9 col-sm-8 col-xs-12 pull-right">
+                                        {% for article in articles %}
+                                        {% if date(article.datepublication|date) > date('-6month') %}
+                                        <div class="media courseList">
+                                            <a class="media-left" >
+                                                <img class="media-object" src="{{ asset('articles/' ~ article.image) }}" style="width: 441px;height: 350px" alt="Image">
+                                                <span class="sticker-round bg-color-1">{{ article.datepublication|date("d")}}<br>{{ article.datepublication|date("M")}}</span>
+                                            </a>
+                                            <div class="media-body">
+                                                <h3 class="media-heading"><a href="{{ path('DetailArticle',{'idarticle':article.idarticle}) }}" class="color-1">{{ article.Titre }}</a></h3>
+                                                <ul class="list-inline">
+                                                    <li><i class="fa fa-user" aria-hidden="true"></i>{{ article.nblike }} Likers</li>
+                                                    <li><i class="fa fa-calendar-o" aria-hidden="true"></i>{{ article.Sujet }}</li><br>
+                                                    {% if is_granted('IS_AUTHENTICATED_REMEMBERED') and app.user.id == article.idauteur %}
+                                                        <li>C'est mon article !</li>
+                                                    {% endif %}
+                                                </ul>
+                                                <p>{{ article.body[:150]|raw}}....</p>
+                                                <ul class="list-inline btn-yellow btnPart">
+                                                    <li><a href="{{ path('DetailArticle',{'idarticle':article.idarticle}) }}" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Details</a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        {% endif %}
+                                        {% endfor %}
+
+                                    </div>
+                                    <div class="col-md-3 col-sm-4 col-xs-12 pull-left">
+                                        <aside>
+                                            <div class="panel panel-default courseSidebar">
+                                                <div class="panel-heading bg-color-1 border-color-1">
+                                                    <h3 class="panel-title">Recherche</h3>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <form method="post">
+                                                    <div class="input-group">
+                                                        <input type="text" class="form-control" placeholder="Enter Your Search"  name="mot" id="mot" style="width: 230px;">
+                                                      <br><br><div style="margin-right: 0px;"><input class="btn btn-warning " type="submit" value="Chercher"></div>
+                                                    </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </aside>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </section>
+
+                        {# display navigation #}
+                        <div class="pagerArea txt-center" style="text-align: center">
+                            {{ knp_pagination_render(articles) }}
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br>
+        <br>
+    {% endblock %}
+    {% block script1 %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
+
+

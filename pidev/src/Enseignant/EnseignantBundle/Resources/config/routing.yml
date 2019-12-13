@@ -1,0 +1,87 @@
+education_enseignat_homepage:
+    path:     /
+    defaults: { _controller: EnseignantEnseignantBundle:Default:index }
+Liste:
+    path:     /ens
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:ens }
+
+Liste1:
+    path:     /end
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:ajout }
+v:
+    path:     /vi
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:en }
+
+Liste3:
+    path:     /end2/{id}
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:supprimer }
+Liste4:
+    path:     /end4
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:search }
+Liste5:
+    path:     /end5/{id}
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:modifier }
+Liste6:
+    path:     /end6
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:calculerprix }
+Liste7:
+    path:     /end9
+    defaults: { _controller: EnseignantEnseignantBundle:Book:ajoutB }
+Liste8:
+    path:     /end10
+    defaults: { _controller: EnseignantEnseignantBundle:Book:searchB }
+Liste9:
+    path:     /end11/{id}
+    defaults: { _controller: EnseignantEnseignantBundle:Book:supprimerB }
+Liste10:
+    path:     /end12/{id}
+    defaults: { _controller: EnseignantEnseignantBundle:Book:modifierB }
+Liste11:
+    path:     /end13
+    defaults: { _controller: EnseignantEnseignantBundle:Book:AfficherB }
+Liste12:
+    path:     /end14
+    defaults: { _controller: EnseignantEnseignantBundle:Book:calculerprofit }
+Liste13:
+    path:     /end15
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:search1 }
+calculer:
+    path:     calculer/{id}
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:calculer }
+info:
+    path:     /info/{id}
+    defaults: { _controller: EnseignantEnseignantBundle:Book:info }
+calculer1:
+    path:     /calculer1
+    defaults: { _controller: EnseignantEnseignantBundle:Book:calculer1 }
+alljjj:
+    path:    /task/all
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:All }
+
+new:
+    path:    /task
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:new }
+allB:
+    path:    /taskb
+    defaults: { _controller: EnseignantEnseignantBundle:Book:AllB }
+newbk:
+    path:    /taskk
+    defaults: { _controller: EnseignantEnseignantBundle:Book:newb }
+delete:
+    path:    /taskd/{id}
+    defaults: { _controller: EnseignantEnseignantBundle:Book:Deletelivre }
+deletepr:
+    path:    /taske/{id}
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:Deletepr }
+modifffb:
+    path:    /taski/{id}/{nomauteur}/{description}/{prix}
+    defaults: { _controller: EnseignantEnseignantBundle:Book:Updateb }
+modib:
+    path:    /tasi/{id}/{adresse}/{prix}/{nbr}
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:Updatep }
+affivh:
+    path:    /iis/{iduser}
+    defaults: { _controller: EnseignantEnseignantBundle:enseignant:affichid }
+affih:
+    path:    /ii/{iduser}
+    defaults: { _controller: EnseignantEnseignantBundle:Book:affichjd }

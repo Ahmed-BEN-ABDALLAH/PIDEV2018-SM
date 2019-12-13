@@ -1,0 +1,36 @@
+<html>
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/style1.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/demo1.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/drop.css')}}" >
+
+    <title>Ajout Blague</title>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1><span align="center">All For Kids</span></h1><br>
+        <span align="center"> <h1>Espace Administration des loisirs </h1></span>
+
+    </header>
+    <div  class="form">
+        <fieldset style="width: 20%">
+            <legend>Modifier une Blague</legend><br>
+
+            <form action="" method="post" >
+                {{ form_start(f) }}
+                <p class="contact"><label>Titre</label></p><br>{{ form_widget(f.titre) }}<br>
+                <p class="contact"><label>Description</label></p><br>{{ form_widget(f.description) }}<br>
+                 <br>{{ form_widget(f.Modifier) }}<br>
+                <br>{{ form_end(f) }}
+
+
+
+            </form>
+
+        </fieldset>
+    </div>
+</div>
+
+</body>
+</html>

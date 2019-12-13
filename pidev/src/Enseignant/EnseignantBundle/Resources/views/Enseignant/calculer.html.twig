@@ -1,0 +1,62 @@
+{% extends 'template.html.twig' %}    {% block body %}
+
+
+    {% block style %}
+        {{ parent() }}
+    {% endblock %}
+    {% block content %}
+        {% block menu_sante %}
+            <section class="pageTitleSection">
+                <div class="container">
+                    <div class="pageTitleInfo">
+
+                        <ol class="breadcrumb">
+                            <li><a href="index-2.html">Accueil</a></li>
+                            <li class="active">Prix formation</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        {% endblock  %}
+
+<div class="sectionTitle text-center">
+    <h2>
+        <span class="shape shape-left bg-color-4"></span>
+        <span>PRIX DE FORMATION EN DT</span>
+        <span class="shape shape-right bg-color-4"></span>
+    </h2>
+    <ul class="pager">
+        <li class="prev"><a href="{{ path('Liste13') }}"><i class="fa fa-arrow-left" aria-hidden="true"></i>Prev</a></li></ul>
+</div>
+{% for m in nbs  %}
+
+<div class="container"  style="margin:auto ">
+
+    <div class="row">
+        <div class="col-xs-12" >
+            <div class="tabCommon">
+
+                <div class="tab-content" style="width: 1200px; margin-right: 10px">
+                    <div id="leftHome" class="tab-pane fade in active" style="margin-right: 10px">
+
+
+
+    <ul class="nav nav-tabs">
+
+        <li class="active" style="height: 200px;width: 300px"><br><br><a data-toggle="tab" style=" height: 120px;width: 250px;font-size: 100px;margin: auto;" ><br>{{ m }}</a></li>
+    </ul>
+{% endfor %}
+
+
+</div>
+</div>
+</div>
+</div>
+<br>
+        </div></div>
+        <br><br>
+{% endblock %}
+    {% block script1 %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'template.html.twig' %}
+    {% block body %}
+
+
+        {% block style %}
+            {{ parent() }}
+        {% endblock %}
+        {% block content %}
+            {% block menu_sante %}
+                <section class="pageTitleSection">
+                    <div class="container">
+                        <div class="pageTitleInfo">
+                            <h2>Baby sitters</h2>
+                            <ol class="breadcrumb">
+                                <li><a href="index-2.html">Accueil</a></li>
+                                <li class="active">Baby sitters</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+            {% endblock  %}
+            Formulaire Ajout Baby sitters
+            .<br>
+            .<br>
+            .<br>
+            .<br>
+            .<br>
+            .<br>
+
+
+        {% endblock %}
+        {% block script1 %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

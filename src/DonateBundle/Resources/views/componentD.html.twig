@@ -1,0 +1,178 @@
+<div class="r">
+
+    <div class="col" >
+
+        <div class="products">
+
+
+            {% if produit is  empty  %}
+            <center> <strong >  pas des donations </strong></center>
+            {% else %}
+
+            {% for a in produit %}
+                {% if a.appro=="1" %}
+
+                    <div class="getDonation {{ a.genre }} {{ a.categorie }} col-sm-6 col-md-4 col-lg-4 mb-30">
+
+                        <div class="product pb-0">
+                            <div class="users {{a.id }}" id="aaaa{{a.id }}"> <span class="pe-7s-like"></span>{{ a.nbj }}</div>
+
+                            <div class="product-thumb" id="img{{ a.id }}">
+                                <img alt="" src="{{ asset(a.image) }}" class="img-responsive img-fullwidth"  style="height: 150px ;width: 80%" >
+                                <img id="pimg{{ a.id }}" hidden  style="position: absolute;top: 0px;left: 100px;width: 200px;" alt="" src="{{ asset('images/flat-color-icons-svg/like.svg') }}" title="like.svg">
+                                <div class="overlay">
+                                    {#           <script>
+                                                   $("#img{{ a.id }}").dblclick(function(){
+                                                       $("#pimg{{ a.id }}").fadeIn();
+                                                       setTimeout(function(){ $("#pimg{{ a.id }}").fadeOut(); }, 500);
+                                                   });
+
+
+                                               </script>#}
+
+
+
+
+
+
+
+
+
+
+
+                                    <div class="btn-product-view-details">
+                                        <a class="btn btn-default btn-theme-color-orange btn-sm btn-flat pl-20 pr-20
+
+                                         btn-add-to-cart text-uppercase font-weight-700" href="#{{ a.id }}" data-toggle="modal"> details</a>
+                                    </div>
+
+
+
+
+                                </div>
+                            </div>
+
+
+
+                            <script>
+
+                                $("#img{{a.id}}").dblclick(function(){
+                                    jaime({{a.id }})
+                                });
+
+
+
+                            </script>
+
+                            <script>
+                                function jaime(id){
+                                    $.ajax({
+                                        url: "http://localhost/datatable_21/web/app_dev.php/donate/jaime"+id,
+                                        success: function(result){
+
+                                            $("#aaaa{{a.id }}").html({{ a.nbj }}+1);
+                                            $("#pimg"+id).fadeIn();
+
+                                            setTimeout(function(){ $("#pimg"+id).fadeOut(); }, 500);
+
+                                        }}
+                                    );
+                                }
+                            </script>
+
+                            <div class="product-details text-center bg-lighter pt-15 pb-10">
+                                <a href="#">   <strong style="color: #1d78cb">{{  (a.nomuser) }}</strong></a>
+                                <p style="color: red"><i class="fa fa-map-marker mr-5"></i> {{ a.adresse }} </p>
+                                <p style="color: #00CC00"> <i class="fa fa-calendar mr-5"></i>{{ a.datenow|date('D-m-Y') }} </p>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                {% endif %}
+
+
+            {% endfor %}
+        </div>
+
+        {#   les fille  #}{% endif %}
+
+
+
+            {% for a in produit %}
+
+
+
+                <div class="modal fade bs-example-modal-lg" id={{ a.id }} tabindex="-1" role="dialog"  aria-labelledby="myLargeModalLabel" >
+                    <div class="modal-dialog modal-md">{#tebdila#}
+                        <div class="modal-content row-md-24"  >
+
+                            <div class="product row-lg" >
+
+                                <div class="col-md-20">{#tebdila#}
+                                    <div class="product-summary row-lg-7">
+                                        <h2 >{{ a.nom }}</h2>
+
+                                        <div class="short-description">
+                                            <p>{{ a.description }}</p>
+                                        </div>
+                                        <div class="category"><strong style="color: #1a1a1a">Nom Donateur:</strong> <a href="#">{{ a.nomuser }}</a>,</div>
+
+                                        <div class="category"><strong style="color: #00CC00">Category:</strong> <a href="#">{{ a.categorie }}</a>,</div>
+                                        <div class="tags"><strong style="color: #5D9CEC">genre:</strong> <a href="#">{{ a.genre }}</a>,</div>
+                                        <div class="cart-form-wrapper mt-30">
+                                            <form enctype="multipart/form-data" method="post" class="cart">
+                                                <input type="hidden" value="productID" name="add-to-cart">
+                                                <table class="table variations no-border">
+                                                    <tbody>
+                                                    <tr>
+                                                        <td class="name"><img alt="" src="{{ asset('images/flat-color-icons-svg/cell_phone.svg') }}" height="30px" width="30px">tel</td>
+                                                        <td>
+                                                            {{ a.tel }}
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="name">
+                                                            {# <img alt="" src="{{ asset('images/flat-color-icons-svg/globe.svg') }}"  height="30px" width="30px" >#} <i class="fa fa-map-marker mr-7" style="color: red"></i>adresse
+                                                        </td>
+
+                                                        <td>
+                                                            {{ a.adresse }}
+                                                        </td>
+                                                    </tr>
+
+                                                    <tr>
+                                                        <td class="name"><img alt="" src="{{ asset('images/flat-color-icons-svg/calendar.svg') }}" height="30px" width="30px">date</td>
+                                                        <td >
+                                                            {{ a.datenow|date('d-m-y') }}
+                                                        </td>
+                                                    </tr>
+
+
+                                                    </tbody>
+                                                </table>
+
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+
+
+
+
+
+
+
+
+

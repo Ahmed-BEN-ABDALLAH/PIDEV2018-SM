@@ -1,0 +1,319 @@
+{% extends 'layout.html.twig' %}
+
+
+{% block content %}
+    <link href="{{asset('css/rotating-card.css')}}" rel='stylesheet' />
+
+
+    <link href="{{asset('css/rotating-card.css')}}" rel='stylesheet' />
+    <link href="{{ asset('https://fonts.googleapis.com/icon?family=Material+Icons') }}" rel="stylesheet">
+    <link href="{{asset('css/style32.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/default32.css')}}" id="option_color">
+    <link href="{{asset('css/rotating-card.css')}}" rel='stylesheet' />
+
+
+    <section class="inner-header divider parallax layer-overlay overlay-dark-5" data-bg-img="{{ asset('images/bg/bg8.jpg') }}">
+        <div class="container pt-70 pb-20">
+            <!-- Section Content -->
+            <div class="section-content">
+
+
+                <div class="row">
+                    <div class="col-xs-12">
+                        <div class="sectionTitle text-center">
+                            <h2>
+                                <span class="shape shape-left bg-color-4"></span>
+                                <span  class="color-3" >Les Offres</span>
+                                <span class="shape shape-right bg-color-4"></span>
+                            </h2>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    {% if babys == NULL %}
+        <center><h3> Il n'y a pas d'offre </h3></center>
+    {% else %}
+
+        <div class='col-md-5'>
+            <div class="form-group">
+                <div class='input-group date' id='datetimepicker6'>
+                    <input type='text' class="form-control" name="disponibilite"  data-date-format="DD-MM-YYYY"  id="recherche"/>
+                    <span class="input-group-addon">
+                    <span class="glyphicon glyphicon-calendar"></span>
+                </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+
+            <div class="modal fade customModal"  tabindex="-1" role="dialog" >
+                <div class="modal-dialog col-md-3">
+                    <div class="modal-content" style="width: 1000px" >
+                        {#<div class="panel panel-default formPanel">#}
+
+                        {#<div class="col-sm-8" id="modify">#}
+
+                        {#<div class="panel panel-default checkoutInfo">#}
+                        {#<div class="panel-heading bg-color-3 border-color-3">#}
+                        {#<center>      <h3 class="panel-title">Contactez Nous</h3></center>#}
+
+                        {#</div>#}
+                        {#{{ form_start(form) }}#}
+                        {#<div class="panel-body" >#}
+                        {#<div class="form-group">#}
+                        {#<div class="col-sm-6 col-xs-12">#}
+                        {#<label for="">Nom</label>#}
+                        {#{{ form_widget(form.nom) }}#}
+                        {#<input type="text" class="form-control border-color-1" id="">#}
+                        {#</div>#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                        {#<div class="col-sm-6 col-xs-12">#}
+                        {#<label for="">Prenom</label>#}
+                        {#{{ form_widget(form.prenom) }}#}
+                        {#<input type="text" class="form-control border-color-1" id="">#}
+                        {#</div>#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                        {#<div class="col-sm-6 col-xs-12">#}
+                        {#<label for="">Email</label>#}
+                        {#{{ form_widget(form.email) }}#}
+                        {#<input type="text" class="form-control border-color-1" id="">#}
+                        {#</div>#}
+                        {#</div>#}
+
+                        {#<div class="form-group">#}
+                        {#<div class="col-sm-6 col-xs-12">#}
+                        {#<label for="">Numero Télephone</label>#}
+                        {#{{ form_widget(form.tel) }}#}
+                        {#<input type="text" class="form-control border-color-1" id="">#}
+                        {#</div>#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                        {#<div class="col-sm-6 col-xs-12">#}
+                        {#<label for="">Message</label>#}
+                        {#{{ form_widget(form.text) }}#}
+                        {#<input type="text" class="form-control border-color-1" id="">#}
+                        {#</div>#}
+                        {#</div>#}
+                        {#<div class="form-group">#}
+                        {#<div class="col-sm-6 col-xs-12">#}
+                        {#<label for=""></label>#}
+                        {#<a href="{{ path('my_app_mail_sendpage') }}"></a>#}
+                        {#{{ form_widget(form.Envoyer) }}#}
+
+                        {#</div>#}
+                        {#</div>#}
+
+                        {#</div>#}
+                        {#{{ form_end(form) }}#}
+                        {#</div>#}
+                        {#</div>#}
+                        {#</div>#}
+                    </div>
+                </div>
+            </div>
+            {#{% endfor %}#}
+            <div class="row" style="padding-top: 30px">
+
+
+                <div class="r">
+
+                    {% for baby in babys  %}
+
+                        {% if baby.etat=="Accepté" %}
+
+                        <div class="col-xs-12 col-sm-3 col-md-3">
+                            <article class="post clearfix mb-sm-30">
+                                <div class="product" style="padding-bottom: 0px">
+                                    <div class="product-thumb">
+                                        {#listes des produits yolo#}
+
+                                        <img style="width: 250px;height: 250px;" alt="image"   src="{{ asset(baby.image) }}" class="img-responsive ">
+
+                                        <div class="overlay">
+                                            <div class="btn-add-to-cart-wrapper">
+                                                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                                    <a class="btn btn-theme-color-red btn-sm btn-flat pl-3 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="#loginModal" data-toggle="modal" >Contacter</a>
+                                                {% else %}
+                                                    <a class="btn btn-theme-color-red btn-sm btn-flat pl-3 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="{{ path('my_app_mail_formdemande',{'id':baby.email}) }}" >Contacter</a>
+                                                {% endif %}
+                                            </div>
+
+                                            <div class="btn-product-view-details">
+                                                <a class="btn btn-default btn-theme-color-sky btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="#{{ baby.id }}" data-toggle="modal">Voir Details</a>
+                                            </div>
+                                            <div class="product-details text-center bg-lighter pt-15 pb-10">
+
+                                                <p style="color: red"><i class="fa fa-map-marker mr-5"></i> {{baby.adrese }} </p>
+                                                <p style="color: #00CC00"> <i class="fa fa-calendar mr-5"></i>{{ baby.disponibilite }} </p>
+                                                <p style="color: #1b7e5a"><i class="fa fa-money"></i> {{baby.prix}}Dt </p>
+
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+                                <div class="entry-content p-20 pr-10  bg-white">
+                                    <div class="entry-meta media mt-0 no-bg no-border">
+                                        <div class="entry-date media-left text-center flip bg-theme-color-green pt-5 pr-15 pb-5 pl-15">
+                                            <ul>
+                                                <li class="font-16 text-white font-weight-600 border-bottom">{{ baby.disponibilite }}</li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="media-body pl-15">
+                                            <div class="event-content pull-left flip">
+                                                <h4 class="entry-title m-0 mt-5"><a class="text-theme-color-blue" href="#">{{ baby.nom }}</a></h4>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+
+
+                            </article>
+                            <br>
+                        </div>
+
+
+
+                        <div class="modal fade customModal" id={{ baby.id }}>
+                            <div class="modal-dialog col-md-3">
+                                {#<div class="modal-content">#}
+                                <div class="card-container">
+                                    <div class="card">
+                                        <div class="front">
+                                            <div class="cover">
+                                                <img src="{{ asset('images/rotating_card_thumb3.png') }}"/>
+                                            </div>
+                                            <div class="user">
+                                                <img class="img-circle" src="{{ asset(baby.image) }}"/>
+                                            </div>
+                                            <div class="content">
+                                                <div class="main">
+                                                    Nom et Prenom:<h3 class="name" ><h3 style="color:#b4446e">{{ baby.nom }} {{ baby.prenom }} </h3></h3>
+                                                    {#<p class="profession">{{ role }}</p>#}
+
+                                                    Numero de Telephone :<p class="text-center" style="color: #0f3e68"> {{ baby.numtel }}</p>
+                                                </div>
+                                                <div class="footer">
+                                                    <div class="rating">
+                                                        <i class="fa fa-mail-forward"  style="color:#0f3e68"></i> Plus de Details
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> <!-- end front panel -->
+                                        <div class="back">
+                                            <div class="header">
+                                                <h5 class="motto"style="color:#0f3e68">"coordonnées"</h5>
+                                            </div>
+                                            <div class="content">
+                                                <div class="main">
+
+                                                    Adresse:  :<h3 class="name" ><h3 style="color:#b4446e">{{ baby.adrese }} </h3></h3>
+
+                                                    Prix:</strong> <p class="text-center"> <h3  style="color :#0f74a8">{{ baby.prix}} Dt</h3></p>
+                                                    Description:</strong> <p class="text-center"> <h5  style="color:#0f74a8">{{ baby.description}} </h5></p>
+                                                    Email:</strong> <p class="text-center"> <h5  style="color:#0f74a8">{{ baby.email}} </h5></p>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="footer">
+                                            <div class="social-links text-center">
+                                                <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                                <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                                <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                                            </div>
+                                        </div>
+                                    </div> <!-- end back panel -->
+                                </div><!-- end card -->
+                            </div> <!-- end card-container -->
+                        </div>
+
+                        {% endif %}
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    {% endif %}
+    <div class="navigation  text-center" >
+        <strong style="color: red"> {{ knp_pagination_render(babys) }}</strong>
+    </div>
+    <a class="btn btn-theme-color-sky btn-xs left-side" href="{{ path('pdf') }}"> Show PDF</a>
+
+    <script>
+
+
+        $(document).ready(function () {
+            $('#recherche').on('keyup', function () {
+                $search = $(this).val();
+
+                $.ajax({
+                    url: "{{path('_ajaxg')}}",
+                    data: {'search': $search }
+                }).done(function (response) {
+
+                    $('.r').html(response)
+                }).catch(function (err) {
+
+                });
+            });
+        });
+
+
+    </script>
+    <script>
+        {% if error %}
+        $(window).load(function(){
+            $('#loginModal').modal('show');
+        });
+        {% endif %}
+    </script>
+    {#<div id="fb-root"></div>#}
+    {#<script>(function(d, s, id) {#}
+    {#var js, fjs = d.getElementsByTagName(s)[0];#}
+    {#if (d.getElementById(id)) return;#}
+    {#js = d.createElement(s); js.id = id;#}
+    {#js.src = 'https://connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.12';#}
+    {#fjs.parentNode.insertBefore(js, fjs);#}
+    {#}(document, 'script', 'facebook-jssdk'));</script>#}
+
+    {#<div class="fb-like" data-href="https://www.facebook.com/ghada.damak" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>#}
+
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    {#<script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-5a95b54e10929979"></script>#}
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker6').datetimepicker();
+            $('#datetimepicker7').datetimepicker({
+                useCurrent: false //Important! See issue #1075
+            });
+            $("#datetimepicker6").on("dp.change", function (e) {
+                $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+            });
+            $("#datetimepicker7").on("dp.change", function (e) {
+                $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
+            });
+        });
+    </script>
+
+{% endblock %}

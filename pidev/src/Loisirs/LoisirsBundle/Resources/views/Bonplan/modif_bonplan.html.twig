@@ -1,0 +1,44 @@
+<html><head>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/ddd/css/rating.css') }}" />
+    <script src="{{ asset('jquery.min.js') }}"></script>
+    <script src="{{ asset('bundles/ddd/js/rating.js') }}"></script>
+
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/style1.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/demo1.css')}}" >
+    <link rel="stylesheet" type="text/css" href="{{ asset('Admin/css/drop.css')}}" >
+
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1><span align="center">All For Kids</span></h1><br>
+        <span align="center"> <h1>Espace Administration des loisirs </h1></span>
+
+    </header>
+    <div  class="form">
+        <fieldset style="width: 20%">
+            <legend>Modifier un Bon Plan</legend><br>
+
+            <form action="" method="post" >
+                {{ form_start(f) }}
+                <p class="contact"><label>Categorie</label></p><br>{{ form_widget(f.categorie) }}<br>
+                <p class="contact"><label>Region</label></p><br>{{ form_widget(f.region) }}<br>
+                <p class="contact"><label>Adresse</label></p><br>{{ form_widget(f.adresse) }}<br>
+                <br>{{ form_widget(f.Modifier) }}<br>
+                <br>{{ form_end(f) }}
+
+
+
+            </form>
+
+        </fieldset>
+    </div>
+</div>
+
+
+      <!--  <td>Rating</td>
+        <td> form_widget(f.rating)</td>
+        </tr>-->
+
+    </body>
+</html>

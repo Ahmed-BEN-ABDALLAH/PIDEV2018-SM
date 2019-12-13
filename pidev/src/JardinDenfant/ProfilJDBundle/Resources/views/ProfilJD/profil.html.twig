@@ -1,0 +1,51 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    <div class="media courseList">
+
+            <a class="media-left" href="single-blog-left-sidebar.html">
+                <img  class="media-object" src="{{ asset('uploads/images/' ~ m.image) }}" alt="Image">
+
+            </a>
+
+            <div class="media-body">
+                <h3 class="media-heading"><a href="single-blog-left-sidebar.html" class="color-2">{{ m.nomJD }}</a></h3>
+                <ul class="list-inline">
+                    <li><i class="fa fa-user" aria-hidden="true"></i>{{ app.user.username }}</li>
+
+                </ul>
+                <p><strong style="color: yellowgreen">description </strong>{{ m.description }} </p>
+                <p><strong style="color: coral">numero d'authorisation</strong>{{ m.numauth }}</p>
+                <p> <strong style="color: deepskyblue">adresse du jardin</strong> {{ m.adresse }}</p>
+
+                <p style="color: red">
+                    <strong>NOTE TOTALE </strong>   {{m.rating }}
+                </p>
+                <ul class="list-inline btn-green btnPart">
+                    <li><a href="{{ path('map',{'numauth':m.numauth} )}}" class="btn btn-link"><i class="fa fa-angle-double-right" aria-hidden="true"></i> Voir sur la carte</a></li>
+                </ul>
+
+
+
+            </div>
+
+    </div>
+
+
+
+
+
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+

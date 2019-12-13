@@ -1,0 +1,100 @@
+{% extends('template.html.twig') %}
+{% block body %}
+    <div class="row" style="width: 1000px;margin: auto;">
+        <div class="sectionTitle text-center">
+            <h2>
+                <span class="shape shape-left bg-color-4"></span>
+                <span>Ajouter compte</span>
+                <span class="shape shape-right bg-color-4"></span>
+            </h2>
+        </div>
+        <div class="col-xs-12">
+            <div class="homeContactContent">
+                {% for flashMessage in app.session.flashbag.get('error') %}
+
+                    <div class="alert alert-success">
+                        {{ flashMessage }}
+                    </div>
+                {% endfor %}
+
+
+
+
+
+                {{ form_start(form,{'method': 'post', 'action': path('fos_user_registration_register'), 'attr': {'class': ''}}) }}
+                <div class="row">
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            {{ form_widget(form.username, { 'attr': {'class':'form-control border-color-1',
+                                'placeholder': 'username'|trans} }) }}
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+
+                            {{ form_widget(form.email, { 'attr': {'class':'form-control border-color-1',
+                                'placeholder': 'Mail'|trans} }) }}
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            {{ form_widget(form.roles, { 'attr': {'class':'aa form-control border-color-1',
+                                'placeholder': 'rols'|trans} })}}
+                        </div>
+                    </div>
+                    <div id="show" hidden>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            {{ form_widget(form.adresse, { 'attr': {'class':'form-control border-color-1',
+                                'placeholder': 'adresse'|trans} })}}
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            {{ form_widget(form.adresse_rue, { 'attr': {'class':'form-control border-color-1',
+                                'placeholder': 'rue'|trans} })}}
+                        </div>
+                    </div>
+                    </div>
+                    <div class="col-sm-6 col-xs-12">
+                        <div class="form-group">
+                            {{ form_widget(form.plainPassword, { 'attr': {'class':'',
+                                'placeholder': 'rols'|trans} })}}
+                        </div>
+                    </div>
+
+                    <div class="col-xs-12">
+                        <div class="formBtnArea">
+                            <input class="btn btn-primary" type="submit" value="{{ 'registration.submit'|trans }}" />
+                        </div>
+                    </div>
+                </div>
+                {{ form_end(form) }}
+            </div>
+        </div>
+    </div>
+    <script src="{{ asset('js/jquery-3.2.1.min.js')}}"></script>
+    <script>
+
+
+        $(document).ready(function()
+        {
+            $('.aa').change(function()
+            {
+                var aa=$('.aa').val();
+                alert(aa);
+                if(aa == 'ROLE_PARENT')
+                {
+                    $('#show').show();
+                    alert('ok');
+                }
+
+            });
+
+        });
+
+
+    </script>
+
+{% endblock %}

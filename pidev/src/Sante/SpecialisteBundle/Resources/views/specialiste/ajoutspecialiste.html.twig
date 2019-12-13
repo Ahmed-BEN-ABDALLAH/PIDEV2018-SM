@@ -1,0 +1,59 @@
+{% extends 'template.html.twig' %}    {% block body %}
+
+
+        {% block style %}
+            {{ parent() }}
+        {% endblock %}
+        {% block content %}
+            {% block menu_sante %}
+                <section class="pageTitleSection">
+                    <div class="container">
+                        <div class="pageTitleInfo">
+                            <h2>Santé</h2>
+                            <ol class="breadcrumb">
+                                <li><a href="index-2.html">Accueil</a></li>
+                                <li class="active">Profil</li>
+                            </ol>
+                        </div>
+                    </div>
+                </section>
+            {% endblock  %}
+
+            {#{{ form (f) }} #}
+            {{ form_start(f) }} {# form methode= action =#}
+
+            <table>
+                <tr>
+                    <td>Cin: *</td>
+                    <td>{{ form_widget(f.cin) }}
+                        </td>
+                </tr>
+                <tr>
+                    <td>Nom: *</td>
+                    <td>{{ form_widget(f.nom) }}</td>
+                </tr>
+                <tr>
+                    <td>Prenom: *</td>
+                    <td>{{ form_widget(f.prenom) }}</td>
+                </tr>
+                <tr>
+                    <td>Description: *</td>
+                    <td>{{ form_widget(f.description) }}</td>
+                </tr>
+                <tr>
+                    <td>Date Naissance: *</td>
+                    <td>{{ form_widget(f.dateNaissance) }}</td>
+                </tr>
+                <tr>
+                    <td>Specialite: *</td>
+                    <td>{{ form_widget(f.specialite) }}</td>
+                </tr>
+
+            </table>
+            {{ form_end(f) }}
+
+        {% endblock %}
+        {% block script1 %}
+            {{ parent() }}
+        {% endblock %}
+    {% endblock %}

@@ -1,0 +1,186 @@
+{% extends 'template.html.twig' %}
+    {% block body %}
+
+<section class="mainContent full-width clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <form action="#">
+                    <div class="cartInfo">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr class="bg-color-1">
+                                    <th class="col-lg-2 col-xs-3" style="min-width: 190px; text-indent:-999px;">
+                                        empty</th>
+                                    <th class="col-lg-4 col-xs-3">Nom du produit</th>
+                                    <th class="col-lg-2 col-xs-2">Prix</th>
+                                    <th class="col-lg-2 col-xs-2">Quantité</th>
+                                    <th class="col-lg-2 col-xs-2">Totale</th>
+                                </tr>
+                                </thead>
+        <tbody>
+
+
+        {% for produit in produits %}
+
+                    <tr id="tr{{ produit.id }}">
+                        <td>
+                            <a onclick="deleteproduct('{{ produit.id }}')"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">×</span></button></a>
+                            <span class="cartImage"><img src="{{ asset(produit.image) }}" widht="40%" height="40%"></span>
+                        </td>
+                        <td>{{ produit.nom }}</td>
+                        <td> {{ produit.prix }}</td>
+                        <td><input id="{{ produit.id }}" type="number" placeholder="" value="{{ produit.quantite }}"></td>
+                                <input id="qte{{ produit.id}}" type="number" hidden >
+                                <input id="produit{{ produit.id }}" type="number" hidden value="{{ produit.prix }}">
+                        <td><div id="total{{ produit.id }}">{{ produit.prix *   produit.quantite }}</div></td>
+                    </tr>
+            <script>
+
+//                function deleteproduct(id) {
+//
+//                    $.ajax({
+//                        async: false,
+//                        url: "http://localhost/pidev/web/app_dev.php/boutique/delprodsession/"+id,
+//                        success: function(result){
+//                            $("#tr"+id).hide();
+//                            updatepanier()
+//                            var quant = parseInt($("#qte"+id).val())
+//                            var prixprod =  parseInt($("#produit"+id).val());
+//                            var totalprod = prixprod * quant;
+//                            var aa=parseInt($("#aa").val())
+//                            aa=aa-parseInt(totalprod)
+//                            $("#aa").val(aa)
+//                            $("#bb").html(aa)
+//                        }}
+//                    );
+//                }
+
+                function addToCart(id) {
+
+                    $.ajax({
+                        url: "http://localhost/pidev/web/app_dev.php/boutique/setSession/"+id,
+                        success: function(result){
+                            updatepanier()
+                        }}
+                    );
+                }
+
+
+                function delfromCart(id,quantite) {
+                    $.ajax({
+                        url: "http://localhost/pidev/web/app_dev.php/boutique/delsession/"+id+quantite,
+                        success: function(result){
+
+                            updatepanier()
+                        }}
+                    );
+                }
+
+                $("#qte{{ produit.id }}").val($("#{{ produit.id }}").val())
+
+                $("#{{ produit.id }}").change(function(){
+
+                    if(parseInt($("#{{ produit.id }}").val())> parseInt($("#qte{{ produit.id }}").val()))
+                    {var quant = parseInt($("#qte{{ produit.id }}").val())
+                        quant = quant + 1 ;
+                        $("#qte{{ produit.id }}").val(quant)
+                        {#totalproduit({{ produit.id }},quant)#}
+                        var prixprod =  parseInt($("#produit{{ produit.id }}").val());
+                        var totalprod = prixprod * quant;
+                        $("#total{{ produit.id }}").html(totalprod)
+                        var aa=parseInt($("#aa").val())
+                        aa=aa+parseInt(prixprod)
+                        $("#aa").val(aa)
+                        $("#bb").html(aa)
+                         addToCart({{ produit.id }})
+
+                    }
+
+                    else {
+
+                        var quant1 = parseInt($("#qte{{ produit.id }}").val())
+                        quant1 = quant1 - 1 ;
+                        $("#qte{{ produit.id }}").val(quant1)
+                        var prixprod =  parseInt($("#produit{{ produit.id }}").val());
+                        var totalprod = prixprod * quant1;
+                        $("#total{{ produit.id }}").html(totalprod)
+                        var aa=parseInt($("#aa").val())
+                        aa=aa-parseInt(prixprod)
+
+                        $("#aa").val(aa)
+
+                        $("#bb").html(aa)
+                        {#totalproduit({{ produit.id }},quant1)#}
+                        setTimeout(
+                                function(){
+                                    delfromCart({{ produit.id }},quant1);
+                                }, 200);
+                    }
+                    if(parseInt($("#qte{{ produit.id }}").val()) == 0)
+                    {
+                        $("#tr{{ produit.id }}").hide();
+                    }
+                });
+
+            </script>
+        {% endfor %}
+
+                                    <tr>
+                                    <td colspan="5">
+
+                                    </td>
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <form action="#">
+            <div class="row">
+                <div class="col-sm-6 col-sm-offset-6 col-xs-12">
+                    <div class="cartInfo cartTotal">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                <tr class="bg-color-2">
+                                    <th>Totale du carte</th>
+                                    <th></th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td class="col-xs-6">
+                                        <strong>Totale</strong>
+                                    </td>
+                                    <input id="aa" value="{{ prixtotal }}" hidden>
+                                    <td class="col-xs-6" ><div id="bb">{{ prixtotal }}</div></td>
+                                </tr>
+        {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                <tr>
+                                    <td colspan="2" class="btnPart"><a href="{{ path('AjoutCommande') }}" class="btn btn-primary pull-right">Valider la commande<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></td>
+                                </tr>
+                                    {% else %}
+                                        <tr>
+                <td colspan="2" class="btnPart"><a href="#loginModal" class="btn btn-primary pull-right" data-toggle="modal">Valider la commande<i class="fa fa-arrow-circle-right" aria-hidden="true"></i></a></td>
+                                        </tr>
+        {% endif %}
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    </div>
+</section>
+
+{% endblock %}

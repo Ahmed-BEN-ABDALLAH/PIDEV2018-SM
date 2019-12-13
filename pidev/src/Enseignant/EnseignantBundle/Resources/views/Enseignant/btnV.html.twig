@@ -1,0 +1,60 @@
+{% extends 'template.html.twig' %}    {% block body %}
+
+
+    {% block style %}
+        {{ parent() }}
+    {% endblock %}
+    {% block content %}
+        {% block menu_sante %}
+            <section class="pageTitleSection">
+                <div class="container">
+                    <div class="pageTitleInfo">
+
+                        <ol class="breadcrumb">
+                            <li><a href="index-2.html">Accueil</a></li>
+                            <li class="active">Profil</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        {% endblock  %}
+
+        <title>Affichage</title>
+
+        <table border="1">
+            <tr>
+
+                <td>id</td>
+                <td>nom</td>
+                <td>prenom</td>
+                <td>adresse</td>
+                <td>special</td>
+                <td>prix_heure</td>
+                <td>telephone</td>
+                <td>supprimer</td>
+                <td>modifier</td>
+
+            </tr>
+            {% for ligne in m %}
+                <tr>
+                    <td>{{ ligne.id }}</td>
+                    <td>{{ ligne.nom }}</td>
+                    <td>{{ ligne.prenom }}</td>
+                    <td>{{ ligne.adresse }}</td>
+                    <td>{{ ligne.special }}</td>
+                    <td>{{ ligne.prix }}</td>
+
+                    <td><a href="{{ path('Liste3',{'id':ligne.id}) }}">
+                        </a></td>
+                    <td><a href="{{ path('Liste5',{'id':ligne.id}) }}"> modif</a></td>
+
+
+                </tr>
+            {% endfor %}
+        </table>
+
+    {% endblock %}
+    {% block script1 %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

@@ -1,0 +1,184 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        {% block menu_sante %}
+            <section class="pageTitleSection">
+                <div class="container">
+                    <div class="pageTitleInfo">
+                        <h2>Santé</h2>
+                        <ol class="breadcrumb">
+                            <li><a href="index-2.html">Accueil</a></li>
+                            <li class="active">mon espace</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        {% endblock  %}
+        <br>
+        <br>
+        {% if m.etatverif == 0 %}
+<section class="mainContent full-width clearfix">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1 col-xs-12">
+                <div class="errorMsg">
+                    <img src="{{ asset('img/error.png') }}" alt="error image" class="img-responsive">
+                </div>
+            </div>
+            <div class="col-sm-6 col-xs-12">
+                <div class="errorInfo">
+                    <h3>Oops!</h3>
+                    <p style="font-size: large;">Dédsolé, Veuillez attender que l'administrateur verifie votre identité!
+                  <br>  <br>Réessayer plus tard! Un message vous sera envoyer dès que votre espace sera disponible.</p>
+                    <form action="#" method="POST" role="form" class="homeContactContent errorSpace">
+
+                        <div class="formBtnArea pull-left">
+                            <a href="{{ path('sante_specialiste_homepage') }}" class="btn btn-primary bg-color-3">Revenir à la page d'accueil</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+{% else %}
+        <div class="container"  style="margin:auto ">
+
+            <div class="row">
+                <div class="col-xs-12" >
+                    <div class="tabCommon">
+                        <ul class="nav nav-tabs">
+                            <li class="active"><a data-toggle="tab" >Informations</a></li>
+                               <li><a  href="{{ path('listerticlepersonnel',{'id': app.user.id }) }}">Mes articles</a></li>
+                            <li><a  href="{{ path('ajouterArticle',{'id': app.user.id }) }}">Ajouter article</a></li>
+                            <li><a  href="{{ path('supprimercompte') }}">Supprimer compte</a></li>
+                        </ul>
+                        <div class="tab-content" style="width: 1200px; margin-right: 10px">
+                            <div id="leftHome" class="tab-pane fade in active" style="margin-right: 10px">
+                                <div class="media">
+                                    <div class="container" >
+                                        <div class="sectionTitle text-center" style="font-size: small">
+
+                                            <h2>
+
+                                                <span class="shape shape-left bg-color-4"></span>
+                                                <span style=" font-size: 27px;">     <a style="color:#4b4b4b;text-weight:bold" >Informations |</a>
+                                               <span style="color:#4b4b4b;"><a href="{{ path('modifierHoraire',{'id': app.user.id })}}" >Horaire du travail </a></span> </span>
+                                                <span class="shape shape-right bg-color-4"></span>
+                                            </h2>
+                                        </div>
+
+                          {{ form_start(f) }}
+                                        <table style="margin: auto;" >
+                                            <tr >
+                                                <td >  <div style="margin: auto;width: 300px;" class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                                                        <div class="panel panel-default formPanel">
+                                                            <div class="panel-heading bg-color-1 border-color-1">
+                                                                <h3 class="panel-title">Informations Personnel</h3>
+                                                            </div>
+                                                            <div class="panel-body">
+
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.cin, { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'Téléphone portable'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.nom, { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'Téléphone portable'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.prenom, { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'Téléphone portable'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.dateNaissance, { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'Téléphone portable'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.specialite, { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'Téléphone portable'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.description, { 'attr': {'class': "form-control",
+                                                                            'placeholder': ''|trans} }) }}
+                                                                </div>
+                                                                    </div>
+
+                                                            </div>
+                                                        </div>
+                                                    </td>
+
+                                                <td> <div style="margin: auto;width: 300px;" class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                                                        <div class="panel panel-default formPanel">
+                                                            <div class="panel-heading bg-color-1 border-color-1">
+                                                                <h3 class="panel-title">Adresse Cabinet</h3>
+                                                            </div>
+                                                            <div class="panel-body">
+
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.lat , { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'Latitude'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.lng , { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'longitude '|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.gouvernorat, { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'Gouvernorat'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                        {{ form_widget(f.municipalite, { 'attr': {'class': "form-control",
+                                                                            'placeholder': 'adresse'|trans} }) }}
+                                                                </div>
+                                                                <br><br>
+                                                            </div>
+                                                        </div>
+                                                    </div></td>
+                                                <td >   <div style="margin: auto;width: 300px;" class="col-md-4 col-md-offset-2 col-sm-6 col-xs-12">
+                                                        <div class="panel panel-default formPanel">
+                                                            <div class="panel-heading bg-color-1 border-color-1">
+                                                                <h3 class="panel-title">Informations Contact</h3>
+                                                            </div>
+                                                            <div class="panel-body">
+                                                                <div class="form-group formField">
+                                                                    {{ form_widget(f.telephone, { 'attr': {'class': "form-control",
+                                                                        'placeholder': 'Téléphone portable'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                    {{ form_widget(f.numCabinet, { 'attr': {'class': "form-control",
+                                                                        'placeholder': 'Numero de cabinet'|trans} }) }}
+                                                                </div>
+                                                                <div class="form-group formField">
+                                                                    {{ form_widget(f.mail, { 'attr': {'class': "form-control",
+                                                                        'placeholder': 'E-mail'|trans} }) }}
+                                                                </div>
+<br> <br><br> <br>
+                                                            </div>
+                                                        </div>
+
+                                                    </div></td>
+                                            </tr>
+                                        </table>
+                                        <div style="margin: auto; width: 900px">{{ form_widget(f.Valider, { 'attr': {'class': "btn btn-primary btn-block bg-color-3 border-color-3"} }) }}</div>
+                                        {{ form_end(f) }}
+                                        <br>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endif %}
+        <br>
+        <br>
+    {% endblock %}
+    {% block script1 %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}

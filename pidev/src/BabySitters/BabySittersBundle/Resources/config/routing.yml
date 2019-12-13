@@ -1,0 +1,15 @@
+baby_sitters_baby_sitters_homepage:
+    path:     /
+    defaults: { _controller: BabySittersBabySittersBundle:Default:index }
+
+ajout:
+    path:     ajoutB
+    defaults: { _controller: BabySittersBabySittersBundle:Babysitter:ajout }
+
+afficher_b:
+    path:     /afficherB
+    defaults: { _controller: BabySittersBabySittersBundle:Babysitter:afficherB }
+
+modifier:
+    path:     /modifier
+    defaults: { _controller: BabySittersBabySittersBundle:Babysitter:modifier }

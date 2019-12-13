@@ -1,0 +1,123 @@
+<div class="r">
+    {% for baby in events %}
+
+
+        <div class="col-xs-12 col-sm-3 col-md-3">
+            <article class="post clearfix mb-sm-30">
+                <div class="product" style="padding-bottom: 0px">
+                    <div class="product-thumb">
+                        {#listes des produits yolo#}
+
+                        <img style="width: 250px;height: 250px;" alt="image"   src="{{ asset(baby.image) }}" class="img-responsive ">
+
+                        <div class="overlay">
+                            <div class="btn-add-to-cart-wrapper">
+                                {% if not is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+                                    <a class="btn btn-theme-color-red btn-sm btn-flat pl-3 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="#loginModal" data-toggle="modal" >Contacter</a>
+                                {% else %}
+                                    <a class="btn btn-theme-color-red btn-sm btn-flat pl-3 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="{{ path('my_app_mail_formdemande',{'id':baby.email}) }}" >Contacter</a>
+                                {% endif %}
+                            </div>
+
+                            <div class="btn-product-view-details">
+                                <a class="btn btn-default btn-theme-color-sky btn-sm btn-flat pl-20 pr-20 btn-add-to-cart text-uppercase font-weight-700" href="#{{ baby.id }}" data-toggle="modal">Voir Details</a>
+                            </div>
+                            <div class="product-details text-center bg-lighter pt-15 pb-10">
+
+                                <p style="color: red"><i class="fa fa-map-marker mr-5"></i> {{baby.adrese }} </p>
+                                <p style="color: #00CC00"> <i class="fa fa-calendar mr-5"></i>{{ baby.disponibilite }} </p>
+                                <p style="color: #1b7e5a"><i class="fa fa-money"></i> {{baby.prix}}Dt </p>
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="entry-content p-20 pr-10  bg-white">
+                    <div class="entry-meta media mt-0 no-bg no-border">
+                        <div class="entry-date media-left text-center flip bg-theme-color-green pt-5 pr-15 pb-5 pl-15">
+                            <ul>
+                                <li class="font-16 text-white font-weight-600 border-bottom">{{ baby.disponibilite }}</li>
+
+                            </ul>
+                        </div>
+                        <div class="media-body pl-15">
+                            <div class="event-content pull-left flip">
+                                <h4 class="entry-title m-0 mt-5"><a class="text-theme-color-blue" href="#">{{ baby.nom }}</a></h4>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+
+
+
+            </article>
+            <br>
+        </div>
+
+        <div class="modal fade customModal" id={{ baby.id }}>
+            <div class="modal-dialog col-md-3">
+                {#<div class="modal-content">#}
+                <div class="card-container">
+                    <div class="card">
+                        <div class="front">
+                            <div class="cover">
+                                <img src="{{ asset('images/rotating_card_thumb3.png') }}"/>
+                            </div>
+                            <div class="user">
+                                <img class="img-circle" src="{{ asset(baby.image) }}"/>
+                            </div>
+                            <div class="content">
+                                <div class="main">
+                                    Nom et Prenom:<h3 class="name" ><h3 style="color:#b4446e">{{ baby.nom }} {{ baby.prenom }} </h3></h3>
+                                    {#<p class="profession">{{ role }}</p>#}
+
+                                    Numero de Telephone :<p class="text-center" style="color: #0f3e68"> {{ baby.numtel }}</p>
+                                </div>
+                                <div class="footer">
+                                    <div class="rating">
+                                        <i class="fa fa-mail-forward"  style="color:#0f3e68"></i> Plus de Details
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <!-- end front panel -->
+                        <div class="back">
+                            <div class="header">
+                                <h5 class="motto"style="color:#0f3e68">"coordonnées"</h5>
+                            </div>
+                            <div class="content">
+                                <div class="main">
+
+                                    Adresse:  :<h3 class="name" ><h3 style="color:#b4446e">{{ baby.adrese }} </h3></h3>
+
+                                    Prix:</strong> <p class="text-center"> <h3  style="color :#0f74a8">{{ baby.prix}} Dt</h3></p>
+                                    Description:</strong> <p class="text-center"> <h5  style="color:#0f74a8">{{ baby.description}} </h5></p>
+                                    Email:</strong> <p class="text-center"> <h5  style="color:#0f74a8">{{ baby.email}} </h5></p>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="footer">
+                            <div class="social-links text-center">
+                                <a href="http://creative-tim.com" class="facebook"><i class="fa fa-facebook fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="google"><i class="fa fa-google-plus fa-fw"></i></a>
+                                <a href="http://creative-tim.com" class="twitter"><i class="fa fa-twitter fa-fw"></i></a>
+                            </div>
+                        </div>
+                    </div> <!-- end back panel -->
+                </div><!-- end card -->
+            </div> <!-- end card-container -->
+        </div>
+    {% endfor %}
+
+</div>
+

@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+{% block title %}Forum{% endblock %}
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('Forumassets/css/mescss/treecategories.css') }}">
+
+{% endblock %}
+{% block content %}
+<div class="main-container">
+
+
+        <h1>Forum</h1>
+    </div>
+        <div class="content-wrap">  <!--START: Content Wrap-->
+
+                <div class="row">
+                    <div class="col-md-4 panel-expand">
+                        {% include 'ForumBundle:Base:categories.html.twig' %}
+                    </div>
+                    <div class="col-md-8">
+                    {% include 'ForumBundle:MyForum:stat.html.twig' %}
+                    </div>
+
+                    </div>
+            </div>
+
+{% endblock %}
+{%  block javascripts %}{% endblock %}

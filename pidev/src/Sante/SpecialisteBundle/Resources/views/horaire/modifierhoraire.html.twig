@@ -1,0 +1,325 @@
+{% extends 'template.html.twig' %}
+{% block body %}
+
+    {% block content %}
+        {% block menu_sante %}
+            <section class="pageTitleSection">
+                <div class="container">
+                    <div class="pageTitleInfo">
+                        <h2>Santé</h2>
+                        <ol class="breadcrumb">
+                            <li><a href="index-2.html">Accueil</a></li>
+                            <li class="active">mon espace</li>
+                        </ol>
+                    </div>
+                </div>
+            </section>
+        {% endblock  %}
+<br>
+        <br>
+            <div class="container"  style="margin:auto ">
+
+                <div class="row">
+                    <div class="col-xs-12" >
+                        <div class="tabCommon">
+                            <ul class="nav nav-tabs">
+                                <li class="active"><a data-toggle="tab" >Informations</a></li>
+                                <li><a  href="{{ path('listerticlepersonnel',{'id': app.user.id }) }}">Mes articles</a></li>
+                                <li><a  href="{{ path('ajouterArticle',{'id': app.user.id }) }}">Ajouter article</a></li>
+                                <li><a  href="{{ path('supprimercompte') }}">Supprimer compte</a></li>
+
+                            </ul>
+                            <div class="tab-content" style="width: 1200px; margin-right: 10px">
+                                <div id="leftHome" class="tab-pane fade in active" style="margin-right: 10px">
+                                    <div class="media">
+                                        <div class="container" >
+                                            <div class="sectionTitle text-center" style="font-size: small">
+
+<h2>
+
+                                                    <span class="shape shape-left bg-color-4"></span>
+                                                    <span style=" font-size: 27px;">     <a href="{{ path('modifier_info',{'id': app.user.id })}}" style="text-weight:bold">Informations |</a>
+                                               <span style="color:#4b4b4b;"><a style="color:#4b4b4b;text-weight:bold">Horaire du travail </a></span> </span>
+                                                    <span class="shape shape-right bg-color-4"></span>
+</h2>
+                                            </div>
+
+                                               <div class="row" style="width: 800px;margin: auto">
+
+                                                            <div class="col-sm-6 col-xs-12">
+                                                                <div class="accordionCommon" id="accordionOne">
+                                                                    <div class="panel-group" id="accordionFirst">
+
+                                                                        <div class="panel panel-default">
+                                                                            <a class="panel-heading accordion-toggle bg-color-2" data-toggle="collapse" data-parent="#accordionFirst" href="#collapse-bb">
+                                                                                <span>Lundi</span>
+                                                                                <span class="iconBlock iconTransparent"><i class="fa fa-chevron-down"></i></span>
+                                                                                <span class="separator"></span>
+                                                                            </a>
+                                                                            <div id="collapse-bb" class="panel-collapse collapse">
+                                                                                <div class="panel-body">
+                                                                                    {{ form_start(f1) }}
+                                                                                        <div class="form-group">
+                                                                                            <span style="font-weight: bold">Horaire début le matin:</span>
+                                                                                            {{ form_widget(f1.horarireDebutMatin, { 'attr': {'class': "form-control border-color-2",
+                                                                                                'placeholder': 'Cin'|trans} }) }}
+                                                                                        </div>
+
+                                                                                        <div class="form-group">
+                                                                                            <span style="font-weight: bold">Horaire fin le matin:</span>
+                                                                                            {{ form_widget(f1.horarireFinMatin, { 'attr': {'class': "form-control border-color-2",
+                                                                                                'placeholder': 'Nom'|trans} }) }}
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <span style="font-weight: bold">Horaire début l'après midi:</span>
+                                                                                            {{ form_widget(f1.horairemidiDebut, { 'attr': {'class': "form-control border-color-2",
+                                                                                                'placeholder': 'prenom'|trans} }) }}
+                                                                                        </div>
+                                                                                        <div class="form-group">
+                                                                                            <span style="font-weight: bold">Horaire fin l'après midi:</span>
+                                                                                            {{ form_widget(f1.horairemidiFin, { 'attr': {'class': "form-control border-color-2",
+                                                                                                'placeholder': ''|trans} }) }}
+                                                                                        </div>
+
+                                                                                              <br>
+                                                                                        <div class="formBtnArea">
+                                                                                            {{ form_widget(f1.Valider,{'attr': {'class': "btn btn-primary"} }) }}
+                                                                                        </div>
+
+                                                                                    {{ form_end(f1) }}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="panel panel-default">
+                                                                            <a class="panel-heading accordion-toggle bg-color-3" data-toggle="collapse" data-parent="#accordionFirst" href="#collapse-cc">
+                                                                                <span>Mardi</span>
+                                                                                <span class="iconBlock iconTransparent"><i class="fa fa-chevron-down"></i></span>
+                                                                                <span class="separator"></span>
+                                                                            </a>
+                                                                            <div id="collapse-cc" class="panel-collapse collapse">
+                                                                                <div class="panel-body">
+                                                                                    {{ form_start(f2) }}
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début le matin:</span>
+                                                                                        {{ form_widget(f2.horarireDebutMatin, { 'attr': {'class': "form-control border-color-3",
+                                                                                            'placeholder': 'Cin'|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin le matin:</span>
+                                                                                        {{ form_widget(f2.horarireFinMatin, { 'attr': {'class': "form-control border-color-3",
+                                                                                            'placeholder': 'Nom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début l'après midi:</span>
+                                                                                        {{ form_widget(f2.horairemidiDebut, { 'attr': {'class': "form-control border-color-3",
+                                                                                            'placeholder': 'prenom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin l'après midi:</span>
+                                                                                        {{ form_widget(f2.horairemidiFin, { 'attr': {'class': "form-control border-color-3",
+                                                                                            'placeholder': ''|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <br>
+                                                                                    <div class="formBtnArea">
+                                                                                        {{ form_widget(f2.Valider,{'attr': {'class': "btn btn-primary"} }) }}
+                                                                                    </div>
+
+                                                                                    {{ form_end(f2) }}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="panel panel-default">
+                                                                            <a class="panel-heading accordion-toggle bg-color-5" data-toggle="collapse" data-parent="#accordionFirst" href="#collapse-ee">
+                                                                                <span>Mercredi</span>
+                                                                                <span class="iconBlock iconTransparent"><i class="fa fa-chevron-down"></i></span>
+                                                                                <span class="separator"></span>
+                                                                            </a>
+                                                                            <div id="collapse-ee" class="panel-collapse collapse">
+                                                                                <div class="panel-body">
+                                                                                    {{ form_start(f3) }}
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début le matin:</span>
+                                                                                        {{ form_widget(f3.horarireDebutMatin, { 'attr': {'class': "form-control border-color-5",
+                                                                                            'placeholder': 'Cin'|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin le matin:</span>
+                                                                                        {{ form_widget(f3.horarireFinMatin, { 'attr': {'class': "form-control border-color-5",
+                                                                                            'placeholder': 'Nom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début l'après midi:</span>
+                                                                                        {{ form_widget(f3.horairemidiDebut, { 'attr': {'class': "form-control border-color-5",
+                                                                                            'placeholder': 'prenom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin l'après midi:</span>
+                                                                                        {{ form_widget(f3.horairemidiFin, { 'attr': {'class': "form-control border-color-5",
+                                                                                            'placeholder': ''|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <br>
+                                                                                    <div class="formBtnArea">
+                                                                                        {{ form_widget(f3.Valider,{'attr': {'class': "btn btn-primary"} }) }}
+                                                                                    </div>
+
+                                                                                    {{ form_end(f1) }}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-sm-6 col-xs-12">
+                                                                <div class="accordionCommon" id="accordionTwo">
+                                                                    <div class="panel-group" id="accordionSecond">
+
+                                                                        <div class="panel panel-default">
+                                                                            <a class="panel-heading accordion-toggle bg-color-5" data-toggle="collapse" data-parent="#accordionSecond" href="#collapse-s-5">
+                                                                                <span>Jeudi</span>
+                                                                                <span class="iconBlock iconTransparent"><i class="fa fa-chevron-up"></i></span>
+                                                                                <span class="separator"></span>
+                                                                            </a>
+                                                                            <div id="collapse-s-5" class="panel-collapse collapse">
+                                                                                <div class="panel-body">
+                                                                                    {{ form_start(f4) }}
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début le matin:</span>
+                                                                                        {{ form_widget(f4.horarireDebutMatin, { 'attr': {'class': "form-control border-color-5",
+                                                                                            'placeholder': 'Cin'|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin le matin:</span>
+                                                                                        {{ form_widget(f4.horarireFinMatin, { 'attr': {'class': "form-control border-color-5",
+                                                                                            'placeholder': 'Nom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début l'après midi:</span>
+                                                                                        {{ form_widget(f4.horairemidiDebut, { 'attr': {'class': "form-control border-color-5",
+                                                                                            'placeholder': 'prenom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin l'après midi:</span>
+                                                                                        {{ form_widget(f4.horairemidiFin, { 'attr': {'class': "form-control border-color-5",
+                                                                                            'placeholder': ''|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <br>
+                                                                                    <div class="formBtnArea">
+                                                                                        {{ form_widget(f4.Valider,{'attr': {'class': "btn btn-primary"} }) }}
+                                                                                    </div>
+
+                                                                                    {{ form_end(f1) }}
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="panel panel-default">
+                                                                            <a class="panel-heading accordion-toggle bg-color-3" data-toggle="collapse" data-parent="#accordionSecond" href="#collapse-s-3">
+                                                                                <span>Vendredi</span>
+                                                                                <span class="iconBlock iconTransparent"><i class="fa fa-chevron-up"></i></span>
+                                                                                <span class="separator"></span>
+                                                                            </a>
+                                                                            <div id="collapse-s-3" class="panel-collapse collapse">
+                                                                                <div class="panel-body">
+                                                                                    {{ form_start(f5) }}
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début le matin:</span>
+                                                                                        {{ form_widget(f5.horarireDebutMatin, { 'attr': {'class': "form-control border-color-3",
+                                                                                            'placeholder': 'Cin'|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin le matin:</span>
+                                                                                        {{ form_widget(f5.horarireFinMatin, { 'attr': {'class': "form-control border-color-3",
+                                                                                            'placeholder': 'Nom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début l'après midi:</span>
+                                                                                        {{ form_widget(f5.horairemidiDebut, { 'attr': {'class': "form-control border-color-3",
+                                                                                            'placeholder': 'prenom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin l'après midi:</span>
+                                                                                        {{ form_widget(f5.horairemidiFin, { 'attr': {'class': "form-control border-color-3",
+                                                                                            'placeholder': ''|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <br>
+                                                                                    <div class="formBtnArea">
+                                                                                        {{ form_widget(f5.Valider,{'attr': {'class': "btn btn-primary"} }) }}
+                                                                                    </div>
+
+                                                                                    {{ form_end(f5) }}
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="panel panel-default">
+                                                                            <a class="panel-heading accordion-toggle bg-color-2" data-toggle="collapse" data-parent="#accordionSecond" href="#collapse-s-2">
+                                                                                <span>Samedi</span>
+                                                                                <span class="iconBlock iconTransparent"><i class="fa fa-chevron-up"></i></span>
+                                                                                <span class="separator"></span>
+                                                                            </a>
+                                                                            <div id="collapse-s-2" class="panel-collapse collapse">
+                                                                                <div class="panel-body">
+                                                                                    {{ form_start(f6) }}
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début le matin:</span>
+                                                                                        {{ form_widget(f6.horarireDebutMatin, { 'attr': {'class': "form-control border-color-2",
+                                                                                            'placeholder': 'Cin'|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin le matin:</span>
+                                                                                        {{ form_widget(f6.horarireFinMatin, { 'attr': {'class': "form-control border-color-2",
+                                                                                            'placeholder': 'Nom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire début l'après midi:</span>
+                                                                                        {{ form_widget(f6.horairemidiDebut, { 'attr': {'class': "form-control border-color-2",
+                                                                                            'placeholder': 'prenom'|trans} }) }}
+                                                                                    </div>
+                                                                                    <div class="form-group">
+                                                                                        <span style="font-weight: bold">Horaire fin l'après midi:</span>
+                                                                                        {{ form_widget(f6.horairemidiFin, { 'attr': {'class': "form-control border-color-2",
+                                                                                            'placeholder': ''|trans} }) }}
+                                                                                    </div>
+
+                                                                                    <br>
+                                                                                    <div class="formBtnArea">
+                                                                                        {{ form_widget(f6.Valider,{'attr': {'class': "btn btn-primary"} }) }}
+                                                                                    </div>
+
+                                                                                    {{ form_end(f6) }}
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <br>
+        <br>
+    {% endblock %}
+    {% block script1 %}
+        {{ parent() }}
+    {% endblock %}
+{% endblock %}
